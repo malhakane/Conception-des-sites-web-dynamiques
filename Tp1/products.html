@@ -16,145 +16,249 @@
 			<a href=shopping-cart.html>Panier</a>	
 		</nav>
 	</header>
-		<main>
+	<main>
 		<section>
-			<div>
-				<h1>Categorie</h1>
-				<div class="btn-group1"  id="product-categories">
-				  <button>Appareil photos</button>
-				  <button>Consoles</button>
-				  <button>Ecrans</button>
-				  <button>Ordinateurs</button>
-				  <button>Tous les produits</button>
-				</div>
-			</section>
-			<section>
-				<h1>classement</h1>
-				<div class="btn-group" id="product-criteria">
-				  <button>prix(bas-haut)</button>
-				  <button>Noms(A-Z) (haut-bas)</button>
-				  <button>Noms(Z-A)</button>
-				</div>
-			</section>
-		</div>
-		
-		<section>
-			<h1>Produits</h1>
-			<p>13 produits</p>
-			<div>
-				<a href=product.html>
-				<h1>Apple TV</h1>
-				 <img src= assets/img/apple-tv.png alt="Apple TV" >
-				<P>249.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Canon EOS 5D Mark II</h1>
-				 <img src= assets/img/Camera-1.png alt="Canon EOS 5D Mark II" >
-				<P>2999.99,</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Nikon D7000</h1>
-				 <img src= assets/img/Camera-2.png alt="Nikon D7000" >
-				<P>549.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Canon PowerShot SD1300</h1>
-				 <img src= assets/img/Camera-3.png alt="Canon PowerShot SD1300" >
-				<P>299.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Portable</h1>
-				 <img src= assets/img/home.png alt="Portable" >
-				<P>699.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Portable professionnel</h1>
-				 <img src= assets/img/laptop-1.png alt="Portable professionnel" >
-				<P>599.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>iMac 27</h1>
-				 <img src= assets/img/mac.png alt="iMac 27" >
-				<P>2299.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Moniteur 19</h1>
-				 <img src= assets/img/monitor.png alt="Moniteur 19" >
-				<P>149.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Console PS3</h1>
-				 <img src= assets/img/ps3.png alt="Console PS3" >
-				<P>349.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Téléviseur 50</h1>
-				 <img src= assets/img/tv.png alt="Téléviseur 50" >
-				<P>899.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Console Wii 50</h1>
-				 <img src= assets/img/wii.png alt="Console Wii 50" >
-				<P>199.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Console Xbox One</h1>
-				 <img src= assets/img/xbox.png alt="Console Xbox One" >
-				<P>399.99</P>
-			</a>
-			</div>
-			
-			<div>
-				<a href=product.html>
-				<h1>Manette Xbox 360</h1>
-				 <img src= assets/img/xbox-controller.png alt="Manette Xbox 360" >
-				<P>29.99</P>
-			</a>
+			<h3>Categorie</h3>
+			<div class="btn-group1"  id="product-categories">
+				<button>Appareil photos</button>
+				<button>Consoles</button>
+				<button>Ecrans</button>
+				<button>Ordinateurs</button>
+				<button>Tous les produits</button>
 			</div>
 		</section>
+		<section>
+			<h3>classement</h3>
+			<div class="btn-group" id="product-criteria">
+        <button>prix(bas-haut)</button>
+        <button>prix(haut-bas)</button>
+				<button>Noms(A-Z)</button>
+				<button>Noms(Z-A)</button>
+			</div>
+	  </section>
+		</div>
+    <!-- Pourquoi ne pas utiliser table en html pour les produits -->
+    <!-- D'apres le site de schema.org,on peut utiliser la balise product -->
+		<article id="products-list">
+			<h2>Produits</h2>
+			<p>13 produits</p>
+			<!-- <div>
+			  <a href=product.html>
+				<h1>Apple TV</h1>
+				<img src= assets/img/apple-tv.png alt="Apple TV" >
+				<P>249.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>              
+          <h5>Apple TV</h5>
+          <img src=assets/img/apple-tv.png />
+          <p>249.99</p>
+        </a>
+      </product>
+
+      
+			
+			 <!-- <div>
+				<a href=product.html>
+				<h1>Canon EOS 5D Mark II</h1>
+				<img src= assets/img/Camera-1.png alt="Canon EOS 5D Mark II" >
+				<P>2999.99,</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+          <a href=product.html>
+              <h5>Canon EOS 5D Mark II</h5>
+              <img src=assets/img/camera-1.png />
+              <p>2999.99</p>
+          </a>
+      </product>
+			
+			<!-- <div>
+				<a href=product.html>
+				<h1>Nikon D7000</h1>
+				<img src= assets/img/Camera-2.png alt="Nikon D7000" >
+				<P>549.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>Nikon D7000</h5>
+          <img src=assets/img/camera-2.png />
+          <p>549.99</p>
+        </a>
+      </product>
+			
+			<!-- <div>
+				<a href=product.html>
+				<h1>Canon PowerShot SD1300</h1>
+				<img src= assets/img/Camera-3.png alt="Canon PowerShot SD1300" >
+				<P>299.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>Canon PowerShot SD1300</h5>
+          <img src=assets/img/camera-3.png />
+          <p>299.99</p>
+        </a>
+      </product>
+			
+			<!-- <div>
+				<a href=product.html>
+				<h1>Portable</h1>
+				<img src= assets/img/home.png alt="Portable" >
+				<P>699.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>Portable</h5>
+          <img src=assets/img/home.png />
+          <p>699.99</p>
+        </a>
+      </product>
+			
+			<!-- <div>
+				<a href=product.html>
+				<h1>Portable professionnel</h1>
+				<img src= assets/img/laptop-1.png alt="Portable professionnel" >
+				<P>599.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>Portable professionnel</h5>
+          <img src=assets/img/laptop-1.png />
+          <p>599.99</p>
+        </a>
+      </product>
+			
+			<!-- <div>
+				<a href=product.html>
+				<h1>iMac 27</h1>
+				<img src= assets/img/mac.png alt="iMac 27" >
+				<P>2299.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>iMac 27</h5>
+          <img src=assets/img/mac.png />
+          <p>2299.99</p>
+        </a>
+      </product>
+			
+			<!-- <div>
+				<a href=product.html>
+				<h1>Moniteur 19</h1>
+				<img src= assets/img/monitor.png alt="Moniteur 19" >
+				<P>149.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>Moniteur 19</h5>
+          <img src=assets/img/monitor.png />
+          <p>149.99</p>
+        </a>
+      </product>
+
+      <!-- <div>
+				<a href=product.html>
+				<h1>Téléviseur 50</h1>
+				<img src= assets/img/tv.png alt="Téléviseur 50" >
+				<P>899.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>Téléviseur 50</h5>
+          <img src=assets/img/tv.png />
+          <p>899.99</p>
+        </a>
+      </product>
+			
+			<!-- <div>
+				<a href=product.html>
+				<h1>Console PS3</h1>
+				<img src= assets/img/ps3.png alt="Console PS3" >
+				<P>349.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>Console PS3</h5>
+          <img src=assets/img/ps3.png />
+          <p>349.99</p>
+        </a>
+      </product>
+			
+			<!-- <div>
+				<a href=product.html>
+				<h1>Console Wii 50</h1>
+				<img src= assets/img/wii.png alt="Console Wii 50" >
+				<P>199.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>Console Wii 50</h5>
+          <img src=assets/img/wii.png />
+          <p>199.99</p>
+        </a>
+      </product>
+			
+			<!-- <div>
+				<a href=product.html>
+				<h1>Console Xbox One</h1>
+				<img src= assets/img/xbox.png alt="Console Xbox One" >
+				<P>399.99</P>
+			</a>
+      </div> -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>Console Xbox One</h5>
+          <img src=assets/img/xbox.png />
+          <p>399.99</p>
+        </a>
+      </product>
+			
+			<!-- <div>
+				<a href=product.html>
+				<h1>Manette Xbox 360</h1>
+				<img src= assets/img/xbox-controller.png alt="Manette Xbox 360" >
+				<P>29.99</P>
+			</a>
+      </div>  -->
+      
+      <product href="product.html">
+        <a href=product.html>
+          <h5>Manette Xbox 360</h5>
+          <img src=assets/img/xbox-controller.png />
+          <p>39.99</p>
+        </a>
+      </product>
+    
+    </article>	
+	</main>
 		
-		</main>
-		
-		
-		
-		
-		<footer>
+	<footer>
 		<p> carene guendja 1678331</p>
 		<p> Ablam Koudahe 1518041</p><br>
-		</footer>
+	</footer>
 <!-- TODO -->
 </body>
 </html>
