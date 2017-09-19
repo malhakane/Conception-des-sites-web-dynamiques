@@ -17,21 +17,23 @@
 	
 	<main>
 		<h1>Payment de la commande</h1>
-		<form>
+		<form method="POST" action="confirmation.html">
 			<p><i>completer le formulaire</i></p>
 			<fieldset>
 				<legend>Contact</legend>
-				<label for="last-name"> Nom<em>*</em></label><input id="last-name" autofocus required><br>
-				<label for="first-name">Prénom<em>*</em></label><input id="first-name" required><br>
-				<label for="email">courriel<em>*</em></label><input id="email" type="email" required><br>
-				<label for="phone">téléphone<em>*</em></label><input id="phone" type="tel" required><br>
+				<p><label for="last-name">Nom<em>*</em></label><input id="last-name" autofocus required></p>
+				<p><label for="first-name">Prénom<em>*</em></label><input id="first-name" required></p>
+				<p><label for="email">courriel<em>*</em></label><input id="email" type="email" required></p>
+				<p><label for="phone">téléphone<em>*</em></label><input id="phone" type="tel" required></p>
 			</fieldset>
 			
 			<fieldset>
 				<legend>paiement</legend>
-				<label for="credit-cart">Numéro de la care de crédit<em>*</em></label><input id="credit-cart" required><br>
-				<label for="credit-card-expiry">Date d'expiration de la carte<em>*</em></label><input id="credit-card-expiry" required><br>
+				<p><label for="credit-cart">Numéro de la care de crédit<em>*</em></label><input id="credit-cart" required></p>
+				<p><label for="credit-card-expiry">Date d'expiration de la carte<em>*</em></label><input id="credit-card-expiry" required></p>
 			</fieldset>
+			<!-- <p><a href="confirmation.html"><input type="button" "value="Payer"></a></p> -->
+
 			<p><input type="submit" value="Payer"></p>
 		</form>
 	</main>
