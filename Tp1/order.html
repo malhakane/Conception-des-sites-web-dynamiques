@@ -5,7 +5,7 @@
   <title>OnlineShop - Commande</title>
 </head>
 <body>
-	<header>
+	<!-- <header>
 		<a href=index.html> <img src=assets/img/logo.svg  alt="logo"/></a>
 		<nav>
 			<a href=index.html>Accueil</a>
@@ -39,7 +39,7 @@
 	<footer>
 		<p> carene guendja 1678331</p>
 		<p> Ablam Koudahe 1518041</p><br>
-	</footer>
+	</footer> -->
 <!-- TODO -->
   <header>
     <a href=index.html> <img src=assets/img/logo.svg  alt="logo"/></a>
@@ -58,7 +58,7 @@
         <label for="prenom"> Prénom </label><input id="first_name" placeholder="Carene" autofocus required><br>
         <label for="nom"> Nom </label><input id="last_name" placeholder="Guendja" autofocus required><br>        
         <label for="tel">Numéro de téléphone</label><input id="phone" type="tel" placeholder="(xxx)xxx-xxxx"pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}"><br>
-        <label for="email" > Adresse courriel</label><input id="email" type="email" required><br>
+        <label for="email" > Adresse courriel</label><input id="email" type="email" palceholder = "carenGuendja@mail.com" required><br>
       </fieldset>
 
       <fieldset>
@@ -68,7 +68,7 @@
         <label for="sexe">Sexe</label>
     
       </fieldset>
-      <p><input type="submit" value="Payer"></p>
+      <p><input type="submit" value="Payer" onclick="window.location.href='./confirmation.html'"></p>
     </form>
   </main>
 
