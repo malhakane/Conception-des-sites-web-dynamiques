@@ -17,7 +17,7 @@
 		</nav>
 	</header>
 	<main>
-		<section>
+		<div class = "categories">
 			<h3>Categorie</h3>
 			<div class="btn-group1"  id="product-categories">
 				<button>Appareil photos</button>
@@ -26,8 +26,8 @@
 				<button>Ordinateurs</button>
 				<button>Tous les produits</button>
 			</div>
-		</section>
-		<section>
+		</div>
+		<div class="classement">
 			<h3>classement</h3>
 			<div class="btn-group" id="product-criteria">
         <button>prix(bas-haut)</button>
@@ -35,10 +35,9 @@
 				<button>Noms(A-Z)</button>
 				<button>Noms(Z-A)</button>
 			</div>
-	  </section>
-		</div>
-    <!-- Pourquoi ne pas utiliser table en html pour les produits -->
-    <!-- D'apres le site de schema.org,on peut utiliser la balise product -->
+	  </div>
+		
+    
 		<div id="products-list">
 			<h2>Produits</h2>
 			<p>6 produits</p>
@@ -50,13 +49,13 @@
 			</a>
       </div> -->
       
-      <product href="product.html">
+      <div >
         <a href=product.html>              
           <h5>Apple TV</h5>
-          <img src=assets/img/apple-tv.png />
+          <img src=assets/img/apple-tv.png alt="Apple TV"/>
           <p>249.99</p>
         </a>
-      </product>
+      </div>
 
       
 			
@@ -68,13 +67,13 @@
 			</a>
       </div> -->
       
-      <product href="product.html">
+      <div >
           <a href=product.html>
               <h5>Canon EOS 5D Mark II</h5>
-              <img src=assets/img/camera-1.png />
+              <img src=assets/img/camera-1.png alt="Canon EOS 5D Mark II"/>
               <p>2999.99</p>
           </a>
-      </product>
+      </div>
 			
 			<!-- <div>
 				<a href=product.html>
@@ -84,13 +83,21 @@
 			</a>
       </div> -->
       
-      <product href="product.html">
+			<div>
+					<a href=product.html>
+						<h5>Nikon D7000</h5>
+						<img src=assets/img/camera-2.png alt="Nikon D7000"/>
+						<p>549.99</p>
+					</a>
+			</div>
+			
+      <!-- <product href="product.html">
         <a href=product.html>
           <h5>Nikon D7000</h5>
-          <img src=assets/img/camera-2.png />
+          <img src=assets/img/camera-2.png alt="Nikon D7000"/>
           <p>549.99</p>
         </a>
-      </product>
+      </product> -->
 			
 			<!-- <div>
 				<a href=product.html>
@@ -100,13 +107,13 @@
 			</a>
       </div> -->
       
-      <product href="product.html">
+      <div >
         <a href=product.html>
           <h5>Canon PowerShot SD1300</h5>
-          <img src=assets/img/camera-3.png />
+          <img src=assets/img/camera-3.png alt="Canon PowerShot SD1300"/>
           <p>299.99</p>
         </a>
-      </product>
+      </div>
 			
 			<!-- <div>
 				<a href=product.html>
@@ -132,21 +139,21 @@
 			</a>
 			</div> -->
 			
-			<product href="product.html">
+			<div >
 					<a href=product.html>
 						<h5>Portable </h5>
-						<img src=assets/img/laptop-1.png />
+						<img src=assets/img/laptop-1.png alt="Portable"/>
 						<p>699.99</p>
 					</a>
-				</product>
+			</div>
       
-      <product href="product.html">
+      <div >
         <a href=product.html>
           <h5>Portable professionnel</h5>
-          <img src=assets/img/laptop-2.png />
+          <img src=assets/img/laptop-2.png alt="Portable professionnel"/>
           <p>599.99</p>
         </a>
-			</product>
+			</div>
 			
 			
 			<!-- <div>

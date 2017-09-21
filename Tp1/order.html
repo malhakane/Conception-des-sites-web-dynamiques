@@ -52,20 +52,19 @@
   </header>
   <main>
     <form action="#">
-      <p><i>Complétez le formulaire </p>
+      <p><i>Complétez le formulaire </i></p>
       <fieldset>
         <legend>Contact </legend>
-        <label for="prenom"> Prénom </label><input id="first_name" placeholder="Carene" autofocus required><br>
-        <label for="nom"> Nom </label><input id="last_name" placeholder="Guendja" autofocus required><br>        
-        <label for="tel">Numéro de téléphone</label><input id="phone" type="tel" placeholder="(xxx)xxx-xxxx"pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}"><br>
-        <label for="email" > Adresse courriel</label><input id="email" type="email" palceholder = "carenGuendja@mail.com" required><br>
+        <label for="first-name"> Prénom <em>*</em></label><input id="first-name" placeholder="Carene" autofocus required><br>
+        <label for="last-name"> Nom <em>*</em></label><input id="last-name" placeholder="Guendja" required><br>        
+        <label for="phone">Numéro de téléphone <em>*</em></label><input id="phone" type="tel" placeholder="(xxx)xxx-xxxx" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{4}"><br>
+        <label for="email" > Adresse courriel<em>*</em></label><input id="email" type="email" placeholder = "carenGuendja@mail.com" required><br>
       </fieldset>
 
       <fieldset>
         <legend>Paiement</legend>
-        <label for="carte-de-crédit">Numéro de carte de crédit</label><input id="credit-card" placeholder="xxxx-xxxx-xxxx-xxxx" pattern="\[0-9]{4}(-[0-9]{4}){3}" required><br>
-        <label for="carte-de-crédit-expiry">Date d’expiration de la carte</label><input id="credit-card-expiry" placeholder="xxx" type="number" min="0" max="999"  required><br>
-        <label for="sexe">Sexe</label>
+        <label for="credit-card">Numéro de carte de crédit<em>*</em></label><input id="credit-card" placeholder="xxxx-xxxx-xxxx-xxxx" pattern="\[0-9]{4}(-[0-9]{4}){3}" required><br>
+        <label for="credit-card-expiry">Date d’expiration de la carte<em>*</em></label><input id="credit-card-expiry" placeholder="xxx" type="number" min="0" max="999"  required><br>
     
       </fieldset>
       <p><input type="submit" value="Payer" onclick="window.location.href='./confirmation.html'"></p>
