@@ -6,7 +6,7 @@
   
   <link rel="stylesheet" type="text/css"
 ,→ href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="./assets/CSS/style.css">
 
 </head>
 <body>
@@ -17,10 +17,10 @@
 		</a>
 		<nav>
 		  <ul>
-			<li><a href="./index.html">Accueil</a></li>
-			<li><a href="./products.html">Produits</a></li>
-			<li><a href="./contact.html">Contact</a></li>
-			<li><a href="./shopping-cart.html">Panier</a></li>
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./products.html">Produits</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="./shopping-cart.html">Panier</a></li>
 		  </ul>
 		</nav>
 	<div>
@@ -28,7 +28,7 @@
   <main>
     <article>
       <h1>Manette Xbox 360</h1>
-      <img alt="Manette Xbox 360" src="./assets/img/xbox-controller.png">
+      <img alt="Manette Xbox 360" src="./assets/img/xbox-controller.png" title="manette">
       <section>
         <h2>Description</h2>
         <p>Manette pouvant être branchée à une console Xbox 360 et un PC. Cette manette vous permettra de jouer à vos jeux vidéo préférés. 
@@ -42,14 +42,19 @@
           <li>Port pour casque d'écoute pour Xbox Live</li>
         </ul>
       </section>
-      <form>
-        <label for="product-quantity">Quantité:</label>
-        <input type="number" value="1" min="1" id="product-quantity">
-        <button title="Ajouter au panier" type="submit">
-          Ajouter
-        </button>
-      </form>
-      <p>Prix: <strong>29,99&thinsp;$</strong></p>
+      <hr/>
+      <div class="price-quantity">
+          <form >
+              <label for="product-quantity">Quantité:</label>
+              <input type="number" value="1" min="1" id="product-quantity">
+              <button title="Ajouter au panier" type="submit">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Ajouter
+              </button>
+          </form>
+          <p>Prix: <strong>29,99&thinsp;$</strong></p>
+      </div>
+      
     </article>
   </main>
   <footer>
