@@ -29,33 +29,32 @@
     <article>
       <h1>Panier</h1>
       <table>
-        <thead>
-          <tr>
+        <thead >
+          <tr >
             <th></th>
             <th>Produit</th>
             <th>Prix unitaire</th>
             <th>Quantité</th>
-            <th>Prix</th>
+            <th id="prix">Prix</th>
           </tr>       
         </thead>
-        <hr>
         <tbody>
           <tr>
-            <td><button>X</button></td>
+            <td title="btn"><button>X</button></td>
             <td><a href="./product.html">Console Wii</a></td>
             <td>199,99&thinsp;$</td>
             <td><button>-</button> 1 <button>+</button></td>
             <td title="price">199,99&thinsp;$</td>
           </tr>
           <tr>
-            <td><button>X</button></td>
+            <td title="btn"><button>X</button></td>
             <td><a href="./product.html">Manette Xbox 360</a></td>
             <td>29,99&thinsp;$</td>
             <td><button>-</button> 2 <button>+</button></td>
             <td title="price">59,98&thinsp;$</td>
           </tr>
           <tr>
-            <td><button>X</button></td>
+            <td title="btn"><button>X</button></td>
             <td><a href="./product.html">Moniteur 19"</a></td>
             <td>149,99&thinsp;$</td>
             <td><button>-</button> 3 <button>+</button></td>
@@ -64,9 +63,16 @@
         </tbody>
       </table>
       <hr/>
-      <p>Total: <strong>704,94&thinsp;$</strong></p>
-      <button>Vider le panier</button>
-      <a href="./order.html">Commander</a>
+      <div class ="totalorder">
+          <p id = "total">Total: <strong>704,94&thinsp;$</strong></p>
+          <div class = "order">
+              <button>
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  Vider le panier</button>
+              <a href="./order.html">Commander 
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+          </div>
+      </div>
     </article>
   </main>
   <footer>
