@@ -31,11 +31,13 @@ img[title= Accueil]{
 }
 
 nav{
-    padding-right:0;
+	height:60px;
+    /* padding-right:0; */
     float: right; 
-    padding:1px 0px 0px;
+    /* padding:1px 0px 0px; */
     margin:0px;
-    margin-right: 0;
+    /* margin-right: 0; */
+	padding:0px;
 }
 
 nav a {
