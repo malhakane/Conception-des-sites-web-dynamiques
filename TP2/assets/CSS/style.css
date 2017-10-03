@@ -66,6 +66,22 @@ nav a:active{
 }
 
 
+.titre{
+	width: 75%;
+    right: 0;
+    float: right;
+    margin-right: 0px;
+	margin-left: 0px;
+    margin: 0,auto;
+	
+}
+.titre h1{
+	 float: left;
+}
+.titre p{
+	float:right;
+} 
+
 
 div nav li{
     display:inline;
@@ -132,7 +148,7 @@ main {
 [aria-label = Filtres]{
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 20%;
     left: 0;
     float: left;
     
