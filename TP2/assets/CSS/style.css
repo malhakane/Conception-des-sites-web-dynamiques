@@ -231,10 +231,15 @@ main {
 
 [title = "manette"] {
     float: left;
+	width:50%;
 }
 
 
 /*product */
+.infoProduit {
+    float: right;
+	width:50%;
+}
 [title = "Ajouter au panier"] {
     background-color:#0E86C7;
     border: 2px solid #0E86C7;
