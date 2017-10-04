@@ -117,23 +117,13 @@ main {
 
 #products-list a {
     display: inline-block;
-<<<<<<< HEAD
-    width: 277px;
-=======
     width: 275px;
->>>>>>> 8e5734831a63b37695bcc8c37ef9588bec288ff1
     height: 240px;
-    /* margin: 10px; */
+    margin: 10px;
     border: 1px solid #999999; 
     font-size: 10px;
     position: relative;
-<<<<<<< HEAD
-	/* margin:0; */
-	margin-bottom:18px;
-	margin-right:18px;
-=======
     justify-content: space-around;
->>>>>>> 8e5734831a63b37695bcc8c37ef9588bec288ff1
 }
 
 #products-list a img {
@@ -173,17 +163,15 @@ main {
     float: left;
     
 }
-#product-categories,#product-criteria {
+#product-categories {
     display: flex;
     flex-direction: column;
-	background-color:#fff; 
-
 }
 
-/* #product-criteria {
+ #product-criteria {
     display: flex;
     flex-direction: column 
-} */
+}
 
 .coordonnees{
     max-width: 1200px;
