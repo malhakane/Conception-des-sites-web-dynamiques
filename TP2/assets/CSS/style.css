@@ -168,7 +168,7 @@ main {
 #product-categories,#product-criteria {
     display: flex;
     flex-direction: column;
-	background-color:#fff;
+	background-color:#fff; 
 
 }
 
