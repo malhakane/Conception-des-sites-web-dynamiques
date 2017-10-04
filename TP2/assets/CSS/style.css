@@ -3,7 +3,7 @@ body{
     height:100%;
     outline: 0px;
     margin:0;
-    padding: 0;
+    /* padding: 0; */
     font-family :Arial,sans-serif;
 }
 
@@ -11,7 +11,7 @@ body{
 header{
     height:60px;
     margin:0;
-    padding: 0;
+    /* padding: 0; */
     border-bottom:1px solid #0b2d3d ;
     background-color:#14597f;
 }
@@ -56,6 +56,7 @@ nav a:active{
     background-color:#1fb5e9;
     border-radius: 4px;
 }
+
 .fa-shopping-cart{
     color:#14597f;
 }
@@ -104,7 +105,7 @@ main {
     max-width: 1200px;
     padding-left:20px;
     padding-right:20px;
-    margin: auto
+    margin: auto;
 }
 
 #products-list {
@@ -124,6 +125,11 @@ main {
     font-size: 10px;
     position: relative;
     justify-content: space-around;
+	border-radius:4px;
+	transition: background-color 0.2s ease-out;
+}
+#products-list a:hover {
+   background-color:#f3f3f3; 
 }
 
 #products-list a img {
@@ -156,28 +162,35 @@ main {
 }
 
 [aria-label = Filtres]{
-    display: flex;
-    flex-direction: column;
     width: 20%;
     left: 0;
     float: left;
+	border-radius:4px;
+	
     
 }
-#product-categories {
-    display: flex;
-    flex-direction: column;
+
+#product-categories button ,#product-criteria button{
+    background-color: #ffffff; 
+    border: 1px solid #999999;
+     cursor: pointer; 
+    width: 100%; 
+    display: block;
+	transition: background-color 0.2s ease-out;
 }
 
- #product-criteria {
-    display: flex;
-    flex-direction: column 
+#product-categories button:hover,#product-criteria button:hover{
+    background-color:#f3f3f3; 
+}
+#product-categories button:active,#product-criteria button:active{
+    background-color:#ddf2fb; 
 }
 
 .coordonnees{
     max-width: 1200px;
     display: flex;
     flex-direction: row;
-    border: 2px solid #999;
+    border: 1px solid #999;
     margin-top: 20px;
     padding-top: 30px;
     border-radius: 4px;
@@ -240,24 +253,30 @@ main {
     float: right;
 	width:50%;
 }
+
 [title = "Ajouter au panier"] {
-    background-color:#0E86C7;
-    border: 2px solid #0E86C7;
+    background-color:#14597f;
+    border: 1px solid #0b2d3d;
     height: 25px;
     border-radius: 4px;
-    color: #fff
+    color: #fff;
+	transition:background-color 0.2s ease-out;
 }
 
-[title = "Ajouter au panier"] .fa-shopping-cart{
+[title = "Ajouter au panier"]:hover{
+    background-color:#1fb5e9;
+}
+
+ [title = "Ajouter au panier"] .fa-shopping-cart{
     color: #fff;
     margin-left: 8px
-}
+} 
 #product-quantity {
     width: 30px;
     height: 20px;
-    margin-left: 6px;
+    margin-right: 4px;
     border-radius: 4px;
-    border: 2px solid #999;
+    border: 1px solid #999;
 }
 
 .price-quantity {
@@ -296,16 +315,21 @@ table {
     text-align: left;
     
 }
-tr {
+ tr {
     border-bottom: 1px solid black;
-}
+} 
 
 td button {
     border-radius:50%;
     margin: 2px;
     border: 1px solid #999;
-    
-    
+    background-color:#dddddd;
+}
+td button:hover {
+    border-radius:50%;
+    margin: 2px;
+    border: 1px solid #999;
+    background-color:#bbbbbb;
 }
 
 td a {
@@ -381,15 +405,18 @@ td a {
 }
 
 #order-form button{
-    background-color:#0E86C7;
-    border: 1px solid #0E86C7;
+    background-color:#14597f;
+    border: 1px solid #0b2d3d;
     height: 30px;
     border-radius: 4px;
     color: #fff;
     text-decoration: none;
     box-sizing: border-box; 
     margin-top: 20px;
-    float: right
+    float: right;
+}
+#order-form button:hover{
+    background-color:#1fb5e9;
 }
 
 #first-name,#email,#credit-card {
@@ -411,8 +438,8 @@ body footer{
     left: 0;
     height:70px;
     background-color:#eeeeee;
-    border-top:1px;
-    border-top-color:#cccccc;
+    border-top:1px solid #cccccc;
+    /* border-top-color:#cccccc; */
     width:100%;
 }
 footer p{
