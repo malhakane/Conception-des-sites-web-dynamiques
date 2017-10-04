@@ -185,6 +185,12 @@ main {
 #product-categories button:active,#product-criteria button:active{
     background-color:#ddf2fb; 
 }
+#product-categories button:first-child,#product-criteria button:first-child{
+    border-radius:4px 4px 0px 0px; 
+}
+#product-categories button:last-child,#product-criteria button:last-child{
+    border-radius:0px 0px 4px 4px; 
+}
 
 .coordonnees{
     max-width: 1200px;
