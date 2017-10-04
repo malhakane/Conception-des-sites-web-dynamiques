@@ -344,6 +344,69 @@ td a {
     box-sizing: border-box;
 }
 
+/*order */
+.nomprenom {
+    display: flex;
+    flex-direction: row
+}
+.nomprenom div{
+    display: flex;
+    flex-basis: 50%;
+    flex-direction: column;
+}
+.nomprenom div label{
+    margin: 5px
+}
+
+.emailphone {
+    display: flex;
+    flex-direction: row
+}
+
+.emailphone div{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%
+}
+
+.emailphone div label{
+    margin: 5px
+}
+
+.paiement {
+    display: flex;
+    flex-direction: row
+}
+
+.paiement div{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%
+}
+
+.paiement div {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%
+}
+.paiement div label{
+    margin: 5px
+}
+
+#order-form button{
+    background-color:#0E86C7;
+    border: 2px solid #0E86C7;
+    height: 25px;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+    box-sizing: border-box; 
+    margin-top: 20px;
+}
+
+
+/* fin order*/
+
 
 
 /* footer */
