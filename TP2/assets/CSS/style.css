@@ -422,6 +422,10 @@ td a {
 #first-name,#email,#credit-card {
     margin-right: 10px
 }
+#first-name,#last-name,#email,#phone,#credit-card,#credit-card-expiry {
+    border-radius:4px;
+	border:1px solid #999999;
+}
 
 
 
