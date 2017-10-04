@@ -117,15 +117,23 @@ main {
 
 #products-list a {
     display: inline-block;
+<<<<<<< HEAD
     width: 277px;
+=======
+    width: 275px;
+>>>>>>> 8e5734831a63b37695bcc8c37ef9588bec288ff1
     height: 240px;
     /* margin: 10px; */
     border: 1px solid #999999; 
     font-size: 10px;
     position: relative;
+<<<<<<< HEAD
 	/* margin:0; */
 	margin-bottom:18px;
 	margin-right:18px;
+=======
+    justify-content: space-around;
+>>>>>>> 8e5734831a63b37695bcc8c37ef9588bec288ff1
 }
 
 #products-list a img {
@@ -356,6 +364,49 @@ td a {
     text-decoration: none;
     box-sizing: border-box;
 }
+
+/*order */
+.nomprenom,
+.emailphone,
+.paiement{
+    display: flex;
+    flex-direction: row;
+}
+.nomprenom div,
+.emailphone div,
+.paiement div{
+    display: flex;
+    flex-basis: 50%;
+    flex-direction: column;
+}
+.nomprenom div label,
+.paiement div label,
+.emailphone div label{
+    margin: 5px;
+    font-weight: bold;
+    font-size: 16px
+}
+
+#order-form button{
+    background-color:#0E86C7;
+    border: 1px solid #0E86C7;
+    height: 30px;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+    box-sizing: border-box; 
+    margin-top: 20px;
+    float: right
+}
+
+#first-name,#email,#credit-card {
+    margin-right: 10px
+}
+
+
+
+
+/* fin order*/
 
 
 
