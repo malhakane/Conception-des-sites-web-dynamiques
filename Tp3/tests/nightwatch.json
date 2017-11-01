@@ -14,7 +14,7 @@
     "log_path" : "",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "./tests/bin/chromedriver"
+      "webdriver.gecko.driver" : "./tests/bin/geckodriver"
     }
   },
 
@@ -30,7 +30,7 @@
         "./tests/e2e/utils.js"
       ],
       "desiredCapabilities": {
-        "browserName": "chrome",
+        "browserName": "firefox",
         "javascriptEnabled": true,
         "acceptSslCerts": true,
         "marionette": true

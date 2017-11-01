@@ -2,11 +2,12 @@ $(document).ready(function(){
     
     init();
 
-    if(listLocalStorage()!=0) {
-        $('.shopping-cart').append( $('<span></span>').attr('class','count').text(listLocalStorage()));                
+    if(listLocalStorage()==0) {
+        $('.shopping-cart .count').hide();               
+    }else{
+        $('.shopping-cart .count').text(listLocalStorage());
     }
-
-    $(document).on('submit', '.pull-right', function(e){ // Make your changes here
+    $(document).on('submit', '#add-to-cart-form', function(e){ // Make your changes here
         addItem();
         e.preventDefault();        
         
@@ -34,39 +35,20 @@ function init() {
         console.log(resultat);
         
         if( resultat != undefined) {
-            var _h1 = $('<h1></h1>').text(resultat.name);
-            
-            var _div0 = $('<div></div>').attr('class','row');
-            
-            var _div1 =$('<div class = "col"></div>');
-            var _img =$('<img id="product-image"></img>').attr('alt',resultat.name).attr('src','./assets/img/'+ resultat.image);
-            _div1.append(_img);
-            
-            var _div2 =$('<div class = "col"></div>');
-            
-            var _section1 =$('<section><h2>Description<h2/><section/>');
-            var _p1 = $('<p></p>').append(resultat.description);
-            _section1.append(_p1);
-            
-            var _section2 =$('<section><h2>Caracteristiques<h2/><section/>');
-            var _ul = $('<ul></ul>');
+
+            $('#product-name').text(resultat.name);
+
+            $('#product-image').attr('alt',resultat.name).attr('src','./assets/img/'+ resultat.image);
+             
+            $('#product-desc').append(resultat.description);
+
             $.each(resultat.features,function(i,feature){
-                _ul.append($('<li></li>').text(feature));
+                $('#product-features ul').append($('<li></li>').text(feature));
             });
-            _section2.append(_ul);
-            
-            var _form = $('<hr><form class="pull-right" ><label for="product-quantity">Quantité:</label><input class="form-control" id="product-quantity" type="number" value="1" min="1"><button class="btn" title="Ajouter au panier" type="submit"><i class="fa fa-cart-plus"></i>&nbsp; Ajouter</button></form>');
-                    
-            var _p2 = $('<p>Prix:</p>').append($('<strong></strong').text (resultat.price));
-                    
-            _div2.append(_section1).append(_section2).append(_form).append(_p2);
-            
-            _div0.append(_div1).append(_div2);
-            
-            $('article').append(_div0);
+            $('#product-price strong').text(String(resultat.price).replace('.',',') + '$');  
         }
         else{
-            $('article').append($('<h2>Page non trouvée !</h2>'));
+            $('article').empty().append($('<h1>Page non trouvée!</h1>'));
         }
     });
 }
@@ -86,14 +68,12 @@ function addItem() {
         var id = getParameters('id');
         var resultat = result.find(function(field){
             return field.id == id;
-        });
-        console.log('Resultat :' + resultat);
-        console.log('Quantity :' + $("#product-quantity").val());                
-        if(resultat != undefined && $("#product-quantity").val() != 0) {
-            console.log('Ablam');            
+        });               
+        if(resultat != undefined && $("#product-quantity").val() != 0) {            
             saveData(resultat.name);
             if(listLocalStorage()!=0) {
-                $('.shopping-cart').append( $('<span></span>').attr('class','count').text(listLocalStorage()));                
+                $('.shopping-cart .count').show();               
+                $('.shopping-cart .count').text(listLocalStorage());
             }
         }
     });

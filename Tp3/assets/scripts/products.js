@@ -2,18 +2,16 @@
 $(document).ready(function(){
 
 
-    if(listLocalStorage()!=0) {
-        $('.shopping-cart').append( $('<span></span>').attr('class','count').text(listLocalStorage()));                
+    if(listLocalStorage()==0) {
+        $('.shopping-cart .count').hide();               
+    }else{
+        $('.shopping-cart .count').text(listLocalStorage()) 
     }
      
      var nature=0;
      var direction=0;
 
      init(nature,direction);
-     
-     if(listLocalStorage()!=0) {
-        $('.shopping-cart').append( $('<span></span>').attr('class','count').text(listLocalStorage()));                
-    }
 
      $('#basHaut').click(function() {
          direction = 1;
@@ -63,6 +61,8 @@ $(document).ready(function(){
     });
 
     $('#allProducts').click(function(){
+        nature=0;
+        direction=0;
         init(nature,direction);
         changeColor($(this),'product-categories');        
     });
@@ -147,7 +147,7 @@ function init(nature,direction) {
 
         var _small = $('<small></small>').text('Prix : ');
 
-        var _p = $('<p></p>').text(field.price + '$');
+        var _p = $('<p></p>').text(String(field.price).replace('.',',') + '$');
         _p.prepend(_small);
 
         _a.append(_h2);

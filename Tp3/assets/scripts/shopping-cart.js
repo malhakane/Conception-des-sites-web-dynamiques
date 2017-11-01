@@ -4,12 +4,18 @@ $(document).ready(function(){
     //console.log($('.col').text());
     PriceTotal();
 
-    $(document).on('click','td > button',function(){
+    if(listLocalStorage()==0) {
+        $('.shopping-cart .count').hide();               
+    }else{
+        $('.shopping-cart .count').text(listLocalStorage()) 
+    }
+
+    $(document).on('click','.remove-item-button',function(){
         deleteItem($(this));
         
     });
 
-    $(document).on('click','button[title=Retirer]',function(){
+    $(document).on('click','.remove-quantity-button',function(){
         var el = $(this).parent().next();
         var nom=el.parent().parent().prev().prev().children().eq(0).text();
         var part =el.parent().parent().prev().prev().children().eq(0).text();        
@@ -27,7 +33,7 @@ $(document).ready(function(){
         //
     });
 
-    $(document).on('click','button[title=Ajouter]',function(){
+    $(document).on('click','.add-quantity-button',function(){
         var el = $(this).parent().prev();
         el.text(parseInt($(this).parent().prev().text()) +1);
         $('button[title=Retirer]').removeAttr('disabled');
@@ -79,28 +85,28 @@ function incrSortByName(jsonStr) {
             var sumTotal =0;
             $.each(results,function(i,res) {
                 var _tr =$('<tr></tr>');
-                _tr.append($('<td><button title="Supprimer"><i class="fa fa-times"></i></button></td>'));
+                _tr.append($('<td><button class="remove-item-button" title="Supprimer"><i class="fa fa-times"></i></button></td>'));
                 _tr.append($('<td></td>').append($('<a></a>').attr('href','./product.html?id='+ res.id).text(res.name)));
-                _tr.append($('<td></td>').text(res.price + '$'));
+                _tr.append($('<td></td>').text(String(res.price).replace('.',',') + '$'));
                 var _td4 = $('<td></td>');
                 var _div = $('<div></div>').attr('class','row');
                 if(localStorage.getItem(res.name) == 1) {
-                    _div.append('<div class="col"><button title="Retirer" disabled=""><i class="fa fa-minus"></i></button></div>');                    
+                    _div.append('<div class="col"><button class="remove-quantity-button" title="Retirer" disabled=""><i class="fa fa-minus"></i></button></div>');                    
                 }else{
-                    _div.append('<div class="col"><button title="Retirer"><i class="fa fa-minus"></i></button></div>');                    
+                    _div.append('<div class="col"><button class="remove-quantity-button" title="Retirer"><i class="fa fa-minus"></i></button></div>');                    
                 }
-                _div.append($('<div></div>').attr('class','col').text(String(localStorage.getItem(res.name))));
-                _div.append('<div class="col"><button title="Ajouter"><i class="fa fa-plus"></i></button></div>');
+                _div.append($('<div></div>').attr('class','col').text(localStorage.getItem(res.name)));
+                _div.append('<div class="col"><button class="add-quantity-button" title="Ajouter"><i class="fa fa-plus"></i></button></div>');
                 _td4.append(_div);
                 _tr.append(_td4);
-                _tr.append($('<td></td>').text((res.price * parseInt(localStorage.getItem(res.name))).toFixed(2)+'$'));
+                _tr.append($('<td></td>').text(String((res.price * parseInt(localStorage.getItem(res.name))).toFixed(2)).replace('.',',') + '$'));
                 $('tbody').append(_tr);
     
                 sumTotal += res.price * parseInt(localStorage.getItem(res.name)).toFixed(2);
                 
             });
     
-            $('.shopping-cart-total strong').text(sumTotal.toFixed(2) + '$');
+            $('.shopping-cart-total strong').text(String(sumTotal.toFixed(2)).replace('.',',') + '$');
         });
      }
     
@@ -168,7 +174,7 @@ function PriceTotal() {
         $.each(results,function(i,res) {
             sumTotal += res.price * parseInt(localStorage.getItem(res.name)).toFixed(2);
         });
-        $('.shopping-cart-total strong').text(sumTotal.toFixed(2) + '$');
+        $('.shopping-cart-total strong').text(String(sumTotal.toFixed(2)).replace('.',',') + '$');
     });
 }
 
@@ -177,7 +183,7 @@ function partialTotal(name,el) {
         var resultat = result.find(function(field){
             return field.name == name;
         })
-        el.text((resultat.price* localStorage.getItem(resultat.name)).toFixed(2)+'$');
+        el.text(String((resultat.price* localStorage.getItem(resultat.name)).toFixed(2)).replace('.',',')+'$');
     });
 
 }

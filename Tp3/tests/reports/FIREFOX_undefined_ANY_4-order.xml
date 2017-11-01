@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="3"
+            tests="4">
+
+  <testsuite name="4-order"
+    errors="1" failures="3" hostname="" id="" package="4-order" skipped="0"
+    tests="4" time="23.68" timestamp="Wed, 01 Nov 2017 08:58:24 GMT">
+  
+    <testcase name="État du panier d'achats" classname="4-order" time="16.94" assertions="2">
+
+      <failure message="Le nombre de produits dans le panier doit être de '1'.">    at Object.État du panier d'achats (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/4-order.js:89:19)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)</failure>
+
+    
+    </testcase>
+  
+    <testcase name="Soumission d'un formulaire invalide" classname="4-order" time="0.5190" assertions="7">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Remplissage du formulaire" classname="4-order" time="2.921" assertions="11">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Le champ #credit-card-expiry doit indiquer une erreur pour la valeur '13/18'.">    at /home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/4-order.js:116:23
+    at Array.forEach (&lt;anonymous&gt;)
+    at /home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/4-order.js:106:21
+    at Array.forEach (&lt;anonymous&gt;)
+    at Object.Remplissage du formulaire (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/4-order.js:105:12)</failure>
+
+    
+    </testcase>
+  
+    <testcase name="Soumission d'un formulaire valide" classname="4-order" time="3.299" assertions="2">
+
+      <failure message="Le nom indiqué doit être 'Antoine Béland'.">    at Object.Soumission d'un formulaire valide (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/4-order.js:133:19)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)</failure>
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+      ERROR: Unable to locate element: &quot;#dialog&quot; using: css selector
+    at F.command (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/api/assertions/hidden.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
+  Error while running [3 Shopping Cart / Un ou plusieurs produits dans le panier]:
+
+  AssertionError [ERR_ASSERTION]: La quantité pour le produit 'Moniteur 19&quot;' doit être '1'.
+    at Object.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:61:18)
+    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:366:18)
+    at emitTwo (events.js:125:13)
+    at HttpRequest.emit (events.js:213:7)
+    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:393:15)
+    at emitThree (events.js:135:13)
+    at HttpRequest.emit (events.js:216:7)
+    at IncomingMessage.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/http/request.js:168:16)
+    at emitNone (events.js:110:20)
+    at IncomingMessage.emit (events.js:207:7)
+  Error while running [3 Shopping Cart / Suppression d'un item dans le panier]:
+
+  AssertionError [ERR_ASSERTION]: La quantité pour le produit 'Moniteur 19&quot;' doit être '1'.
+    at Object.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:61:18)
+    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:366:18)
+    at emitTwo (events.js:125:13)
+    at HttpRequest.emit (events.js:213:7)
+    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:393:15)
+    at emitThree (events.js:135:13)
+    at HttpRequest.emit (events.js:216:7)
+    at IncomingMessage.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/http/request.js:168:16)
+    at emitNone (events.js:110:20)
+    at IncomingMessage.emit (events.js:207:7)
+  Error while running [3 Shopping Cart / Augmentation de la quantite associee a un item dans le panier]:
+
+  AssertionError [ERR_ASSERTION]: La quantité pour le produit 'Moniteur 19&quot;' doit être '2'.
+    at Object.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:61:18)
+    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:366:18)
+    at emitTwo (events.js:125:13)
+    at HttpRequest.emit (events.js:213:7)
+    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:393:15)
+    at emitThree (events.js:135:13)
+    at HttpRequest.emit (events.js:216:7)
+    at IncomingMessage.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/http/request.js:168:16)
+    at emitNone (events.js:110:20)
+    at IncomingMessage.emit (events.js:207:7)
+  Error while running [3 Shopping Cart / Diminution de la quantite associee a un item dans le panier]:
+
+  AssertionError [ERR_ASSERTION]: La quantité pour le produit 'Moniteur 19&quot;' doit être '1'.
+    at Object.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:61:18)
+    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:366:18)
+    at emitTwo (events.js:125:13)
+    at HttpRequest.emit (events.js:213:7)
+    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:393:15)
+    at emitThree (events.js:135:13)
+    at HttpRequest.emit (events.js:216:7)
+    at IncomingMessage.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/http/request.js:168:16)
+    at emitNone (events.js:110:20)
+    at IncomingMessage.emit (events.js:207:7)
+  Error while running [3 Shopping Cart / Suppression de tous les produits dans le panier]:
+
+  AssertionError [ERR_ASSERTION]: La quantité pour le produit 'Moniteur 19&quot;' doit être '1'.
+    at Object.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:61:18)
+    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:366:18)
+    at emitTwo (events.js:125:13)
+    at HttpRequest.emit (events.js:213:7)
+    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:393:15)
+    at emitThree (events.js:135:13)
+    at HttpRequest.emit (events.js:216:7)
+    at IncomingMessage.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/http/request.js:168:16)
+    at emitNone (events.js:110:20)
+    at IncomingMessage.emit (events.js:207:7)
+ERROR: Unable to locate element: &quot;#name&quot; using: css selector
+    at F.command (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/api/assertions/containsText.js:46:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>
