@@ -9,7 +9,8 @@ $(document).ready(function(){
     }
     $(document).on('submit', '#add-to-cart-form', function(e){ // Make your changes here
         addItem();
-        e.preventDefault();        
+        e.preventDefault(); 
+        $.notify("Le produit a été ajouté au panier",{autoHideDelay: 5000});       
         
     });
 });
@@ -43,7 +44,7 @@ function init() {
             $('#product-desc').append(resultat.description);
 
             $.each(resultat.features,function(i,feature){
-                $('#product-features ul').append($('<li></li>').text(feature));
+                $('#product-features').append($('<li></li>').text(feature));
             });
             $('#product-price strong').text(String(resultat.price).replace('.',',') + '$');  
         }

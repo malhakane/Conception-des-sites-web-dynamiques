@@ -1,4 +1,11 @@
 $(document).ready(function(){
+
+    if(listLocalStorage()==0) {
+        $('.shopping-cart .count').hide();               
+    }else{
+        $('.shopping-cart .count').text(listLocalStorage()) 
+    }
+ 
     $('#order-form').validate({
         rules:{
             "first-name":{
@@ -33,3 +40,16 @@ $(document).ready(function(){
     });
 
 });
+
+function listLocalStorage() {
+    var values = [],
+    keys = Object.keys(localStorage),
+    i = keys.length;
+    var sum = 0;
+
+    while ( i-- ) {
+        sum +=parseInt(localStorage.getItem(keys[i]));
+    }
+
+    return sum;
+}

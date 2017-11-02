@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
     init();
-    //console.log($('.col').text());
     PriceTotal();
 
     if(listLocalStorage()==0) {
@@ -20,26 +19,26 @@ $(document).ready(function(){
         var nom=el.parent().parent().prev().prev().children().eq(0).text();
         var part =el.parent().parent().prev().prev().children().eq(0).text();        
         if(parseInt(el.text()) ==2){
-            el.text(parseInt(el.text()) -1);
+            el.text(String(parseInt(el.text()) -1));
             localStorage.setItem(nom,el.text());                       
             $(this).attr('disabled','');
         } else{
-            el.text(parseInt(el.text()) -1); 
+            el.text(String(parseInt(el.text()) -1)); 
             localStorage.setItem(nom,el.text());            
         } 
         partialTotal(part,el.parent().parent().next());
         PriceTotal();
-        $('.shopping-cart').append($('<span></span>').attr('class','count').text(listLocalStorage()));        
+        $('.count').text(listLocalStorage());
         //
     });
 
     $(document).on('click','.add-quantity-button',function(){
         var el = $(this).parent().prev();
-        el.text(parseInt($(this).parent().prev().text()) +1);
-        $('button[title=Retirer]').removeAttr('disabled');
+        el.text(String(parseInt($(this).parent().prev().text()) +1));
+        $('.remove-quantity-button').removeAttr('disabled');
         var nom=el.parent().parent().prev().prev().children().eq(0).text();
         localStorage.setItem(nom,el.text());
-        $('.shopping-cart').append($('<span></span>').attr('class','count').text(listLocalStorage()));
+        $('.count').text(listLocalStorage());
         var part =el.parent().parent().prev().prev().children().eq(0).text();
         partialTotal(part,el.parent().parent().next());
         PriceTotal();       
@@ -51,7 +50,7 @@ $(document).ready(function(){
             $('article').empty().append('<h1>Panier</h1>');
             $('article').append($('<p></p>').text('Aucun produit dans le panier.'));
             localStorage.clear();
-            $('.count').remove();
+            $('.count').hide();
         }
     })
 });
@@ -87,26 +86,26 @@ function incrSortByName(jsonStr) {
                 var _tr =$('<tr></tr>');
                 _tr.append($('<td><button class="remove-item-button" title="Supprimer"><i class="fa fa-times"></i></button></td>'));
                 _tr.append($('<td></td>').append($('<a></a>').attr('href','./product.html?id='+ res.id).text(res.name)));
-                _tr.append($('<td></td>').text(String(res.price).replace('.',',') + '$'));
+                _tr.append($('<td></td>').append(String(res.price).replace('.',',') + '&thinsp;$'));
                 var _td4 = $('<td></td>');
                 var _div = $('<div></div>').attr('class','row');
                 if(localStorage.getItem(res.name) == 1) {
-                    _div.append('<div class="col"><button class="remove-quantity-button" title="Retirer" disabled=""><i class="fa fa-minus"></i></button></div>');                    
+                    _div.append($('<div class="col"><button class="remove-quantity-button" title="Retirer" disabled=""><i class="fa fa-minus"></i></button></div>'));                    
                 }else{
-                    _div.append('<div class="col"><button class="remove-quantity-button" title="Retirer"><i class="fa fa-minus"></i></button></div>');                    
+                    _div.append($('<div class="col"><button class="remove-quantity-button" title="Retirer"><i class="fa fa-minus"></i></button></div>'));                    
                 }
-                _div.append($('<div></div>').attr('class','col').text(localStorage.getItem(res.name)));
-                _div.append('<div class="col"><button class="add-quantity-button" title="Ajouter"><i class="fa fa-plus"></i></button></div>');
+                _div.append($('<div class ="quantity"></div>').text(String(localStorage.getItem(res.name))));
+                _div.append($('<div class="col"><button class="add-quantity-button" title="Ajouter"><i class="fa fa-plus"></i></button></div>'));
                 _td4.append(_div);
                 _tr.append(_td4);
-                _tr.append($('<td></td>').text(String((res.price * parseInt(localStorage.getItem(res.name))).toFixed(2)).replace('.',',') + '$'));
+                _tr.append($('<td class="price"></td>').append(String((res.price * parseInt(localStorage.getItem(res.name))).toFixed(2)).replace('.',',') + '&thinsp;$'));
                 $('tbody').append(_tr);
     
                 sumTotal += res.price * parseInt(localStorage.getItem(res.name)).toFixed(2);
                 
             });
     
-            $('.shopping-cart-total strong').text(String(sumTotal.toFixed(2)).replace('.',',') + '$');
+            $('#total-amount').text(String(sumTotal.toFixed(2)).replace('.',',') + '$');
         });
      }
     
@@ -135,18 +134,16 @@ function incrSortByName(jsonStr) {
  function deleteItem(el) {
      var result = confirm('Voulez-vous supprimer le produit du panier ?');
      if(result){
-        el.parent().parent().remove();  
         var elmt = el.parent().next().children().eq(0).text();
         if(localStorage.length == 1) {
             $('article').empty().append('<h1>Panier</h1>');
             $('article').append($('<p></p>').text('Aucun produit dans le panier.'));
             $('.count').remove();
             localStorage.removeItem(elmt);            
-            PriceTotal();
         }else{
-            localStorage.removeItem(elmt);            
-            $('.shopping-cart').append($('<span></span>').attr('class','count').text(listLocalStorage()));
-            PriceTotal();
+            localStorage.removeItem(elmt);
+            el.parent().parent().remove();              
+            $('.count').text(listLocalStorage());
         }
         PriceTotal();
     }
@@ -174,7 +171,7 @@ function PriceTotal() {
         $.each(results,function(i,res) {
             sumTotal += res.price * parseInt(localStorage.getItem(res.name)).toFixed(2);
         });
-        $('.shopping-cart-total strong').text(String(sumTotal.toFixed(2)).replace('.',',') + '$');
+        $('#total-amount').text(String(sumTotal.toFixed(2)).replace('.',',') + '$');
     });
 }
 

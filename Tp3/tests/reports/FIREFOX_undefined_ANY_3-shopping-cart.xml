@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites errors="5"
+<testsuites errors="0"
             failures="0"
             tests="6">
 
   <testsuite name="3-shopping-cart"
-    errors="5" failures="0" hostname="" id="" package="3-shopping-cart" skipped="0"
-    tests="6" time="24.42" timestamp="Wed, 01 Nov 2017 08:58:00 GMT">
+    errors="0" failures="0" hostname="" id="" package="3-shopping-cart" skipped="0"
+    tests="6" time="13.16" timestamp="Thu, 02 Nov 2017 01:47:18 GMT">
   
-    <testcase name="Aucun produit dans le panier" classname="3-shopping-cart" time="8.578" assertions="3">
+    <testcase name="Aucun produit dans le panier" classname="3-shopping-cart" time="5.674" assertions="3">
 
     
 
@@ -16,27 +16,83 @@
     
     </testcase>
   
-    <testcase name="Un ou plusieurs produits dans le panier" classname="3-shopping-cart" time="6.002" assertions="1">
+    <testcase name="Un ou plusieurs produits dans le panier" classname="3-shopping-cart" time="2.443" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
     </testcase>
   
-    <testcase name="Suppression d'un item dans le panier" classname="3-shopping-cart" time="2.855" assertions="1">
+    <testcase name="Suppression d'un item dans le panier" classname="3-shopping-cart" time="1.553" assertions="10">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
     </testcase>
   
-    <testcase name="Augmentation de la quantite associee a un item dans le panier" classname="3-shopping-cart" time="2.322" assertions="1">
+    <testcase name="Augmentation de la quantite associee a un item dans le panier" classname="3-shopping-cart" time="0.9670" assertions="5">
+
+    
+
+    
+
+    
+
+    
 
     
     </testcase>
   
-    <testcase name="Diminution de la quantite associee a un item dans le panier" classname="3-shopping-cart" time="2.404" assertions="1">
+    <testcase name="Diminution de la quantite associee a un item dans le panier" classname="3-shopping-cart" time="0.9350" assertions="5">
+
+    
+
+    
+
+    
+
+    
 
     
     </testcase>
   
-    <testcase name="Suppression de tous les produits dans le panier" classname="3-shopping-cart" time="2.260" assertions="1">
+    <testcase name="Suppression de tous les produits dans le panier" classname="3-shopping-cart" time="1.589" assertions="7">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
     </testcase>
@@ -55,71 +111,6 @@
     at AsyncTree.walkUp (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
     at AsyncTree.walkDown (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:90:12)
     at AsyncTree.walkUp (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
-  Error while running [3 Shopping Cart / Un ou plusieurs produits dans le panier]:
-
-  AssertionError [ERR_ASSERTION]: La quantité pour le produit 'Moniteur 19&quot;' doit être '1'.
-    at Object.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:61:18)
-    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:366:18)
-    at emitTwo (events.js:125:13)
-    at HttpRequest.emit (events.js:213:7)
-    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:393:15)
-    at emitThree (events.js:135:13)
-    at HttpRequest.emit (events.js:216:7)
-    at IncomingMessage.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/http/request.js:168:16)
-    at emitNone (events.js:110:20)
-    at IncomingMessage.emit (events.js:207:7)
-  Error while running [3 Shopping Cart / Suppression d'un item dans le panier]:
-
-  AssertionError [ERR_ASSERTION]: La quantité pour le produit 'Moniteur 19&quot;' doit être '1'.
-    at Object.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:61:18)
-    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:366:18)
-    at emitTwo (events.js:125:13)
-    at HttpRequest.emit (events.js:213:7)
-    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:393:15)
-    at emitThree (events.js:135:13)
-    at HttpRequest.emit (events.js:216:7)
-    at IncomingMessage.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/http/request.js:168:16)
-    at emitNone (events.js:110:20)
-    at IncomingMessage.emit (events.js:207:7)
-  Error while running [3 Shopping Cart / Augmentation de la quantite associee a un item dans le panier]:
-
-  AssertionError [ERR_ASSERTION]: La quantité pour le produit 'Moniteur 19&quot;' doit être '2'.
-    at Object.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:61:18)
-    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:366:18)
-    at emitTwo (events.js:125:13)
-    at HttpRequest.emit (events.js:213:7)
-    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:393:15)
-    at emitThree (events.js:135:13)
-    at HttpRequest.emit (events.js:216:7)
-    at IncomingMessage.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/http/request.js:168:16)
-    at emitNone (events.js:110:20)
-    at IncomingMessage.emit (events.js:207:7)
-  Error while running [3 Shopping Cart / Diminution de la quantite associee a un item dans le panier]:
-
-  AssertionError [ERR_ASSERTION]: La quantité pour le produit 'Moniteur 19&quot;' doit être '1'.
-    at Object.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:61:18)
-    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:366:18)
-    at emitTwo (events.js:125:13)
-    at HttpRequest.emit (events.js:213:7)
-    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:393:15)
-    at emitThree (events.js:135:13)
-    at HttpRequest.emit (events.js:216:7)
-    at IncomingMessage.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/http/request.js:168:16)
-    at emitNone (events.js:110:20)
-    at IncomingMessage.emit (events.js:207:7)
-  Error while running [3 Shopping Cart / Suppression de tous les produits dans le panier]:
-
-  AssertionError [ERR_ASSERTION]: La quantité pour le produit 'Moniteur 19&quot;' doit être '1'.
-    at Object.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:61:18)
-    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:366:18)
-    at emitTwo (events.js:125:13)
-    at HttpRequest.emit (events.js:213:7)
-    at HttpRequest.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/index.js:393:15)
-    at emitThree (events.js:135:13)
-    at HttpRequest.emit (events.js:216:7)
-    at IncomingMessage.&lt;anonymous&gt; (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/http/request.js:168:16)
-    at emitNone (events.js:110:20)
-    at IncomingMessage.emit (events.js:207:7)
 ERROR: Unable to locate element: &quot;#name&quot; using: css selector
     at F.command (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/api/assertions/containsText.js:46:21)
     at F.module.exports.BaseAssertion._scheduleAssertion (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:87:17)
