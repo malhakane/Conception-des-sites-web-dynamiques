@@ -10,7 +10,8 @@ $(document).ready(function(){
     $(document).on('submit', '#add-to-cart-form', function(e){ // Make your changes here
         addItem();
         e.preventDefault(); 
-        $.notify("Le produit a été ajouté au panier",{autoHideDelay: 5000});       
+
+        $('#dialog').show(0).delay(5000).hide(0);
         
     });
 });
@@ -36,7 +37,7 @@ function init() {
         console.log(resultat);
         
         if( resultat != undefined) {
-
+			$('#dialog').hide();
             $('#product-name').text(resultat.name);
 
             $('#product-image').attr('alt',resultat.name).attr('src','./assets/img/'+ resultat.image);

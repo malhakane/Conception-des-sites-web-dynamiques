@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="0">
+
+  <testsuite name="confirmation"
+    errors="0" failures="0" hostname="" id="" package="confirmation" skipped="0"
+    tests="0" time="0.000" timestamp="Fri, 03 Nov 2017 00:26:19 GMT">
+  
+
+  
+    <system-err>
+      ERROR: Unable to locate element: &quot;#name&quot; using: css selector
+    at command (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/api/assertions/containsText.js:46:21)
+    at module.exports.BaseAssertion._scheduleAssertion (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at module.exports.BaseAssertion._executeCommand (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.traverse (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:73:8)
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="3"
+            tests="6">
+
+  <testsuite name="3-shopping-cart"
+    errors="0" failures="3" hostname="" id="" package="3-shopping-cart" skipped="0"
+    tests="6" time="4.870" timestamp="Fri, 03 Nov 2017 03:16:03 GMT">
+  
+    <testcase name="Aucun produit dans le panier" classname="3-shopping-cart" time="1.301" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Un ou plusieurs produits dans le panier" classname="3-shopping-cart" time="1.678" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Suppression d'un item dans le panier" classname="3-shopping-cart" time="0.8680" assertions="10">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Augmentation de la quantite associee a un item dans le panier" classname="3-shopping-cart" time="0.3380" assertions="2">
+
+    
+
+    <failure message="AssertionError: Le bouton '-' pour le produit 'Téléviseur 50&quot;' doit être désactivé. - expected &quot;false&quot; but got: &quot;true&quot;">    at Object.&lt;anonymous&gt; (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:72:18)</failure>
+    </testcase>
+  
+    <testcase name="Diminution de la quantite associee a un item dans le panier" classname="3-shopping-cart" time="0.3340" assertions="2">
+
+    
+
+    <failure message="AssertionError: Le bouton '-' pour le produit 'Téléviseur 50&quot;' doit être désactivé. - expected &quot;false&quot; but got: &quot;true&quot;">    at Object.&lt;anonymous&gt; (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:72:18)</failure>
+    </testcase>
+  
+    <testcase name="Suppression de tous les produits dans le panier" classname="3-shopping-cart" time="0.3510" assertions="2">
+
+    
+
+    <failure message="AssertionError: Le bouton '-' pour le produit 'Téléviseur 50&quot;' doit être désactivé. - expected &quot;false&quot; but got: &quot;true&quot;">    at Object.&lt;anonymous&gt; (/usagers/abkouc/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/tests/e2e/3-shopping-cart.js:72:18)</failure>
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

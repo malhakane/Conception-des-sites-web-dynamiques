@@ -5,9 +5,9 @@
 
   <testsuite name="3-shopping-cart"
     errors="0" failures="0" hostname="" id="" package="3-shopping-cart" skipped="0"
-    tests="6" time="13.16" timestamp="Thu, 02 Nov 2017 01:47:18 GMT">
+    tests="6" time="6.681" timestamp="Fri, 03 Nov 2017 03:25:51 GMT">
   
-    <testcase name="Aucun produit dans le panier" classname="3-shopping-cart" time="5.674" assertions="3">
+    <testcase name="Aucun produit dans le panier" classname="3-shopping-cart" time="2.081" assertions="3">
 
     
 
@@ -16,30 +16,7 @@
     
     </testcase>
   
-    <testcase name="Un ou plusieurs produits dans le panier" classname="3-shopping-cart" time="2.443" assertions="6">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Suppression d'un item dans le panier" classname="3-shopping-cart" time="1.553" assertions="10">
-
-    
-
-    
-
-    
-
-    
+    <testcase name="Un ou plusieurs produits dans le panier" classname="3-shopping-cart" time="1.680" assertions="6">
 
     
 
@@ -54,33 +31,13 @@
     
     </testcase>
   
-    <testcase name="Augmentation de la quantite associee a un item dans le panier" classname="3-shopping-cart" time="0.9670" assertions="5">
+    <testcase name="Suppression d'un item dans le panier" classname="3-shopping-cart" time="0.9350" assertions="10">
 
     
 
     
 
     
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Diminution de la quantite associee a un item dans le panier" classname="3-shopping-cart" time="0.9350" assertions="5">
-
-    
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Suppression de tous les produits dans le panier" classname="3-shopping-cart" time="1.589" assertions="7">
 
     
 
@@ -97,32 +54,50 @@
     
     </testcase>
   
+    <testcase name="Augmentation de la quantite associee a un item dans le panier" classname="3-shopping-cart" time="0.6030" assertions="5">
 
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
   
-    <system-err>
-      ERROR: Unable to locate element: &quot;#dialog&quot; using: css selector
-    at F.command (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/api/assertions/hidden.js:42:21)
-    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:87:17)
-    at F.module.exports.BaseAssertion._executeCommand (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:82:17)
-    at AssertionInstance.commandFn [as _commandFn] (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:180:21)
-    at AsyncTree.runCommand (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:154:30)
-    at AsyncTree.runChildNode (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:114:8)
-    at AsyncTree.walkDown (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:80:10)
-    at AsyncTree.walkUp (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
-    at AsyncTree.walkDown (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:90:12)
-    at AsyncTree.walkUp (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
-ERROR: Unable to locate element: &quot;#name&quot; using: css selector
-    at F.command (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/api/assertions/containsText.js:46:21)
-    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:87:17)
-    at F.module.exports.BaseAssertion._executeCommand (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:82:17)
-    at AssertionInstance.commandFn [as _commandFn] (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/assertion.js:180:21)
-    at AsyncTree.runCommand (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:154:30)
-    at AsyncTree.runChildNode (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:114:8)
-    at AsyncTree.walkDown (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:80:10)
-    at AsyncTree.walkUp (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
-    at AsyncTree.walkDown (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:90:12)
-    at AsyncTree.walkUp (/home/ablam/Bureau/Log4420/Conception-des-sites-web-dynamiques/Tp3/node_modules/nightwatch/lib/core/queue.js:97:8)
-    </system-err>
+    <testcase name="Diminution de la quantite associee a un item dans le panier" classname="3-shopping-cart" time="0.5940" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Suppression de tous les produits dans le panier" classname="3-shopping-cart" time="0.7880" assertions="7">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
   
 
   
