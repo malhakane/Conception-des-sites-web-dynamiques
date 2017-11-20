@@ -5,36 +5,36 @@ var data = mongoose.model('Product');
 var session = require("express-session");
 
 router.get(["/", "/accueil"], function(req, res) {
-  res.render("index", { title: "Accueil"});
+  res.render("index", { title: "OnlineShop - Accueil", blue: "acc"});
 });
 
 router.get("/produits", function(req, res) {
-  res.render("produits", { title: "produits"});
+  res.render("produits", { title: "OnlineShop - Produits", blue: "prods"});
 });
 
 router.get("/produit", function(req, res) {
-  res.render("produit", { title: "produit"});
+  res.render("produit", { title: "OnlineShop - Produit"});
 });
 
 router.get("/contact", function(req, res) {
-  res.render("contact", { title: "contact" }); 
+  res.render("contact", { title: "OnlineShop -contact", blue: "cont" }); 
 });
 
 router.get("/panier", function(req, res) {
-  res.render("panier", { title: "panier"});
+  res.render("panier", { title: "OnlineShop -panier"});
 });
 
 router.get("/commande", function(req, res) {
-  res.render("commande", { title: "commande"}); 
+  res.render("commande", { title: "OnlineShop -commande"}); 
 });
 
 router.post("/confirmation", function(req, res) {
-  res.render("confirmation", { title: "confirmation" });
+  res.render("confirmation", { title: "OnlineShop -confirmation" });
 });
 
 /******************Api for products**********************/
 
-router.get("/api/products",function(req,res){
+/* router.get("/api/products",function(req,res){
   mongoose.model('Product').find({},function(err, products) {
       if (err) throw err;
       console.log('Console length : '+ req.param('category'));
@@ -118,7 +118,7 @@ router.delete('/api/products',function(req,res) {
       });
     }
   });  
-});
+}); */
 
 /**
    * Applies a filter to the specified products list to keep only the products of the specified category.
@@ -128,14 +128,14 @@ router.delete('/api/products',function(req,res) {
    * @returns {*}           The products list filtered.
    * @private
    */
-  function _applyCategory(products, category) {
+  /* function _applyCategory(products, category) {
     if (products) {
       products = products.filter(function(product) {
         return category === "all" || product.category === category;
       });
     }
     return products;
-  }
+  } */
 
 
   /**
@@ -150,7 +150,7 @@ router.delete('/api/products',function(req,res) {
    * @returns {*}             The products list sorted.
    * @private
    */
-  function _applySortingCriteria(products, sortingCriteria) {
+  /* function _applySortingCriteria(products, sortingCriteria) {
     if (products) {
       switch (sortingCriteria) {
         case "price-asc":
@@ -191,13 +191,13 @@ router.delete('/api/products',function(req,res) {
     }
     return products;
   }
-
+ */
   
 
 
 /*****************API for shopping-card*************************/
 
-router.get('/api/shopping-cart',function(req,res){
+/* router.get('/api/shopping-cart',function(req,res){
   if(!req.session.order){
     res.send(req.session.order = []); 
   }else{
@@ -281,10 +281,10 @@ router.delete('/api/shopping-cart/:productId',function(req,res){
     }
   }  
 });
-
+ */
 /*******************API des commandes********************** */
 
-router.get('/api/orders',function(req,res){
+/* router.get('/api/orders',function(req,res){
   mongoose.model('Order').find({},function(err, orders) {
     if (err) throw err;
     res.statusCode=200;
@@ -355,7 +355,7 @@ router.delete('/api/orders',function(req,res) {
     }
   });  
 });
-
+*/
 
 module.exports = router;
 

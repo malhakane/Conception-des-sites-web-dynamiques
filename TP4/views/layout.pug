@@ -13,11 +13,11 @@ html(lang='fr')
 						img(alt='logo', src='/img/logo.svg', title='Accueil')
 				nav
 					ul
-						li.active
+						li(class={active:blue==="acc"})
 							a(href='/') Accueil
-						li
+						li(class={active:blue==="prods"})
 							a(href='/produits') Produits
-						li
+						li(class={active:blue==="cont"})
 							a(href='/contact') Contact
 						li
 							a.shopping-cart(href='/panier', title='Panier')
