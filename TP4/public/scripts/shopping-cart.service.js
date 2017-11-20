@@ -11,6 +11,7 @@ onlineShop.shoppingCartService = (function($, productsService) {
 
   var self = {};
   var items = {};
+  var shoppingCartPromise
 
   /**
    * Adds an item in the shopping cart.
@@ -25,12 +26,12 @@ onlineShop.shoppingCartService = (function($, productsService) {
     if (!quantity || typeof quantity !== "number" || quantity <= 0) {
       quantity = 1;
     }
-    if (items[productId]) {
-      items[productId] += quantity;
-    } else {
-      items[productId] = quantity;
-    }
-    _updateLocalStorage();
+    shoppingCartPromise = $.post('/api/shopping-cart',{productId:productId,quantity:quantity},function(data){
+      console.log(data);
+    });
+    return shoppingCartPromise.then(function(data){
+      return data[0];
+    });
   };
 
   /**
@@ -40,8 +41,18 @@ onlineShop.shoppingCartService = (function($, productsService) {
    */
   self.getItems = function() {
     return productsService.getProducts("alpha-asc").then(function(products) {
+      var temp = false;
       return products.filter(function(product) {
-        return items.hasOwnProperty(product.id) && items[product.id] !== undefined;
+        return $.get('/api/shopping-cart',function(orders){
+          for(order in orders){
+            if(order['productId']=== product.id){
+              temp = temp || order['productId']=== product.id
+            }
+          }
+          return temp;
+          //return order.hasOwnProperty(product.id) && items[product.id] !== undefined;
+        })
+        //return items.hasOwnProperty(product.id) && items[product.id] !== undefined;
       }).map(function(product) {
         return {
           product: product,
@@ -59,11 +70,12 @@ onlineShop.shoppingCartService = (function($, productsService) {
    */
   self.getItemsCount = function() {
     var total = 0;
-    for (var productId in items) {
-      if (items.hasOwnProperty(productId) && items[productId]) {
-        total += items[productId];
+    var products = $.get('/api/shopping-cart',function(products){
+      for (var product in products) {
+          total += product['quantity'];
       }
-    }
+    });
+    
     return total;
   };
 
@@ -74,7 +86,14 @@ onlineShop.shoppingCartService = (function($, productsService) {
    * @returns {*}
    */
   self.getItemQuantity = function(productId) {
-    return items[productId] || 0;
+    
+    shoppingCartPromise= $.get('/api/shopping-cart/'+productId,function(data){
+      //console.log(data);
+    });
+    return shoppingCartPromise.then(function(orders){
+      console.log(orders[0]);      
+      return orders[0];
+    });
   };
 
   /**
@@ -103,11 +122,13 @@ onlineShop.shoppingCartService = (function($, productsService) {
   self.updateItemQuantity = function(productId, quantity) {
     if (!quantity || typeof quantity !== "number" || quantity <= 0) {
       throw new Error("The specified quantity is invalid.")
+    }else{
+      $.put('/api/shopping-chart/'+productId,{quantity:quantity});
     }
-    if (items[productId]) {
+    /*if (items[productId]) {
       items[productId] = quantity;
       _updateLocalStorage();
-    }
+    }*/
   };
 
   /**
@@ -116,18 +137,20 @@ onlineShop.shoppingCartService = (function($, productsService) {
    * @param productId   The product ID associated with the item to remove.
    */
   self.removeItem = function(productId) {
-    if (items[productId]) {
+    /*if (items[productId]) {
       items[productId] = undefined;
     }
-    _updateLocalStorage();
+    _updateLocalStorage();*/
+    $.delete('/api/shopping-chart/'+productId,function(){});
   };
 
   /**
    * Removes all the items in the shopping cart.
    */
   self.removeAllItems = function() {
-    items = {};
-    _updateLocalStorage();
+    /*items = {};
+    _updateLocalStorage();*/
+    $.delete('/api/shopping-chart/',function(){});
   };
 
   /**

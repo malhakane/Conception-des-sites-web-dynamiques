@@ -119,7 +119,15 @@ var onlineShop = onlineShop || {};
   $("#add-to-cart-form").submit(function(event) {
     event.preventDefault();
     var productId = $(this).attr("data-product-id");
-    shoppingCartService.addItem(productId, +$(this).find("input").val());
+    shoppingCartService.addItem(productId, +$(this).find("input").val()).done(function(data){
+      shoppingCartService.getItemQuantity(productId).done(function(donnees){
+        _updateCount();
+        console.log("quantity: "+donnees);
+        //$("#shopping-cart-quantity").text(data);      
+      });
+      
+      //$("#shopping-cart-quantity").text(shoppingCartService.getItemQuantity(productId));
+    });
 
     var dialog = $("#dialog");
     dialog.fadeIn();
@@ -127,8 +135,8 @@ var onlineShop = onlineShop || {};
       dialog.fadeOut();
     }, 5000);
 
-    _updateCount();
-    $("#shopping-cart-quantity").text(shoppingCartService.getItemQuantity(productId));
+    //_updateCount();
+    //$("#shopping-cart-quantity").text(shoppingCartService.getItemQuantity(productId));
   });
 
   $("#remove-all-items-button").click(function () {

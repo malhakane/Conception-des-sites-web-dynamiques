@@ -64,11 +64,19 @@ var onlineShop = onlineShop || {};
 
     $("#product-categories").children().click(function() {
       filters.category = $(this).attr("data-category");
-      productsService.getProducts(filters.sortingCriteria, filters.category).done(_updateView);
+      productsService.getProducts(filters.sortingCriteria, filters.category).done(function(data){
+        console.log(filters.category);
+        _updateView(data);
+      });
     });
     $("#product-criteria").children().click(function() {
       filters.sortingCriteria = $(this).attr("data-criteria");
-      productsService.getProducts(filters.sortingCriteria, filters.category).done(_updateView);
+      productsService.getProducts(filters.sortingCriteria, filters.category).done(function(data){
+        console.log(filters.sortingCriteria);        
+        _updateView(data);
+      }).fail(function(){
+        console.log("Error !!!!!!!");
+      });
     });
   });
 

@@ -16,6 +16,7 @@ var onlineShop = onlineShop || {};
    * @private
    */
   function _updateView(product) {
+    console.log(product);    
     $("#product-name").text(product.name);
     $("#product-desc").html(product["description"]);
     $("#product-price").html(utils.formatPrice(product.price));
