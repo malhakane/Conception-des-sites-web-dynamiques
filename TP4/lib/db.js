@@ -29,7 +29,7 @@ mongoose.model("Product", Product);
 mongoose.Promise = global.Promise;
 
 // TODO: Initialiser la connexion avec le "connect string" de votre base de données.
-//mongoose.connect("mongodb://ablam:Ks39px23@ds157475.mlab.com:57475/ablam", { useMongoClient: true });
-mongoose.connect("mongodb://carenedb:tp4db@ds111476.mlab.com:11476/online-shop", { useMongoClient: true });
+mongoose.connect("mongodb://ablam:Ks39px23@ds157475.mlab.com:57475/ablam", { useMongoClient: true });
+//mongoose.connect("mongodb://carenedb:tp4db@ds111476.mlab.com:11476/online-shop", { useMongoClient: true });
 
 
