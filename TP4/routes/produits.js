@@ -5,27 +5,42 @@ var data = mongoose.model('Product');
 var session = require("express-session");
 
 
+
+
 router.get("/",function(req,res){
   mongoose.model('Product').find({},function(err, products) {
       if (err) throw err;
-      console.log('Console length : '+ req.param('category'));
-      console.log('Console length : '+ req.param('criteria'));
-      if(req.param('category') === undefined && req.param('criteria')===undefined){
-        console.log('Je suis ici HAHAHAHAH');
-        
+      if(products.length===0){
+        products =[];
+        res.json(products);
+      }else {
         products = _applyCategory(products,'all');
         products=_applySortingCriteria(products, 'price-asc');
-      }else{
-        if(req.param('category')){
-          console.log('Je suis dans categorie');
-          products = _applyCategory(products, req.param('category'));
+        
+        if(req.query.category === undefined && req.query.criteria===undefined){
+
+          products = _applyCategory(products,'all');
+          products=_applySortingCriteria(products, 'price-asc');
+          //res.json(products);
+        }else{
+          if(!validerParametreCategorie(req.query.category) || !validerParametreCritere(req.query.criteria)){
+            res.statusCode=400;
+            res.send('Bad request');
+          }else{
+            if(req.query.category  && req.query.criteria===undefined || req.query.category){
+              products = _applyCategory(products, req.query.category);
+            }
+            if(req.query.criteria && req.query.category ===undefined || req.query.criteria){
+              products = _applySortingCriteria(products, req.query.criteria);
+            }
+            res.statusCode = 200;
+            //res.json(products);
+          }
         }
-        if(req.param('criteria')){
-          console.log('Je suis dans critere');
-          products = _applySortingCriteria(products, req.param('criteria'));
-        }
+        res.json(products);
       }
-      res.json(products);
+
+
     });
 });
 
@@ -63,7 +78,7 @@ router.delete('/:id',function(req,res){
        res.statusCode = 404;
        res.send('Not Found');
     } else{
-      
+
       mongoose.model('Product').findOneAndRemove(product,function(err){
         if(err) throw err;
 
@@ -74,21 +89,12 @@ router.delete('/:id',function(req,res){
 });
 
 router.delete('/',function(req,res) {
-  mongoose.model('Product').find({},function(err, products) {
-    if (err) throw err;
-    if(products == null) {
-      res.statusCode = 204;
-      res.send('Not Content');
-    }else{
-      mongoose.model('Product').remove(products,function(err,res){
-        if(err){ 
-          throw err;
-        }
-        res.statusCode = 200;
-        res.send('All removed succefully !!' );
+  data.remove({},function(err, products) {
+    if (err)
+		throw err;
+    res.statusCode = 204;
+    res.send('All removed succefully !!' );
       });
-    }
-  });  
 });
 
 /**
@@ -163,7 +169,27 @@ router.delete('/',function(req,res) {
     return products;
   }
 
-  
+function validerParametreCategorie(category){
+  var estValide= false;
+  if(category==="cameras"||category==="computers"||category==="consoles"||category==="screens" ||category===undefined){
+    estValide= true;
+  }else {
+    estValide = false;
+  }
+  return estValide;
+}
+
+function validerParametreCritere(criteria){
+  var valider = false;
+  if(criteria ==="alpha-asc"||criteria ==="alpha-dsc"||criteria ==="price-asc"||criteria ==="price-dsc" || criteria ===undefined){
+    valider = true;
+  }else {
+    valider = false;
+  }
+  return valider;
+}
+
+
 
 
 module.exports = router;
