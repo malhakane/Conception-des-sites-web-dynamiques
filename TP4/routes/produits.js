@@ -4,25 +4,17 @@ var mongoose = require("mongoose");
 var data = mongoose.model('Product');
 var session = require("express-session");
 
-
-
-
 router.get("/",function(req,res){
   mongoose.model('Product').find({},function(err, products) {
-      if (err) throw err;
+      if (err) {
+        console.log('JE suis dans erreur');
+        return res.send();
+      }
       if(products.length===0){
         products =[];
-        res.json(products);
+        res.status(200).json(products);
       }else {
-        products = _applyCategory(products,'all');
-        products=_applySortingCriteria(products, 'price-asc');
         
-        if(req.query.category === undefined && req.query.criteria===undefined){
-
-          products = _applyCategory(products,'all');
-          products=_applySortingCriteria(products, 'price-asc');
-          
-        }else{
           if(!validerParametreCategorie(req.query.category) || !validerParametreCritere(req.query.criteria)){
             res.statusCode=400;
             res.send('Bad request');
@@ -33,18 +25,13 @@ router.get("/",function(req,res){
             if(req.query.criteria && req.query.category ===undefined || req.query.criteria){
               products = _applySortingCriteria(products, req.query.criteria);
             }
-            res.statusCode = 200;
-            //res.json(products);
+            
           }
+          res.status(200).json(products);
         }
-        res.json(products);
-      }
-
-
     });
 });
-
-
+ 
 router.post('/',function(req,res){
   var product = mongoose.model('Product')(req.body);
   product.save(function(err) {
@@ -168,7 +155,7 @@ router.delete('/',function(req,res) {
 
 function validerParametreCategorie(category){
   var estValide= false;
-  if(category==="cameras"||category==="computers"||category==="consoles"||category==="screens" ||category===undefined){
+  if(category==="cameras"||category==="computers"||category==="consoles"||category==="screens" ||category==="all"){
     estValide= true;
   }else {
     estValide = false;
@@ -178,7 +165,7 @@ function validerParametreCategorie(category){
 
 function validerParametreCritere(criteria){
   var valider = false;
-  if(criteria ==="alpha-asc"||criteria ==="alpha-dsc"||criteria ==="price-asc"||criteria ==="price-dsc" || criteria ===undefined){
+  if(criteria ==="alpha-asc"||criteria ==="alpha-dsc"||criteria ==="price-asc"||criteria ==="price-dsc" /*|| criteria ===undefined*/){
     valider = true;
   }else {
     valider = false;

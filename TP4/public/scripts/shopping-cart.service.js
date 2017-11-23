@@ -26,14 +26,14 @@ onlineShop.shoppingCartService = (function($, productsService) {
     if (!quantity || typeof quantity !== "number" || quantity <= 0) {
       quantity = 1;
     }
-    shoppingCartPromise = $.post('/api/shopping-cart',{productId:productId,quantity:quantity},function(data){
+    shoppingCartPromise = $.post('/api/shopping-cart',{productId:parseInt(productId),quantity:parseInt(quantity)},function(data){
       console.log(data);
     });
     return shoppingCartPromise.then(function(data){
       return data[0];
     });
   };
-
+ 
   /**
    * Gets the items in the shopping cart.
    *
@@ -70,10 +70,15 @@ onlineShop.shoppingCartService = (function($, productsService) {
    */
   self.getItemsCount = function() {
     var total = 0;
-    var products = $.get('/api/shopping-cart',function(products){
-      for (var product in products) {
-          total += product['quantity'];
+    var products = $.get('/api/shopping-cart',function(data){
+      console.log('Data : '+ typeof data);
+      var donnees = JSON.parse(data);
+      console.log('donnees : '+data); 
+      for (var donnee in donnees) {
+           console.log('donnee : '+ JSON.stringify(donnee));
+          //total += parseInt(donnee['quantity']);
       }
+      //console.log('Total : '+ total);
     });
     
     return total;
@@ -86,10 +91,7 @@ onlineShop.shoppingCartService = (function($, productsService) {
    * @returns {*}
    */
   self.getItemQuantity = function(productId) {
-    
-    shoppingCartPromise= $.get('/api/shopping-cart/'+productId,function(data){
-      //console.log(data);
-    });
+    shoppingCartPromise= $.get('/api/shopping-cart/'+productId,function(data){ });
     return shoppingCartPromise.then(function(orders){
       console.log(orders[0]);      
       return orders[0];

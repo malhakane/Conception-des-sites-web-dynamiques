@@ -7,18 +7,23 @@ var isPositiveInteger = require('is-positive-integer');
 
 
 router.get('/',function(req,res){// supposed to validate
+  res.contentType('application/json');
   if(req.session.order === undefined){
+    
     req.session.order = [];
-    res.status(200).send(req.session.order); 
+    res.json(JSON.stringify(req.session.order));
+    //res.status(200).json(req.session.order); 
   }else{
-    res.status(200).send(req.session.order);  
+    console.log(req.session.order);
+    res.json(JSON.stringify(req.session.order));
+    //res.status(200).json(req.session.order);  
   }
 });
 
 router.post('/',function(req,res){ // supposed to validate
-  var productId = req.body['productId'];
+  var productId = parseInt(req.body['productId']);
   
-  var quantity = req.body['quantity'];
+  var quantity = parseInt(req.body['quantity']);
   if(isPositiveInteger(productId) && isPositiveInteger(quantity)){
 
     data.count({id:productId},function(err,count){ 
@@ -26,6 +31,7 @@ router.post('/',function(req,res){ // supposed to validate
         res.status(500).json({error:'Errors in server!'});
       }
       if(count === 0){
+        console.log('Je suis dans count =0')
         res.status(400).json({error:'Bad Request'});  
       }else{
         
@@ -33,14 +39,17 @@ router.post('/',function(req,res){ // supposed to validate
           req.session.order =[];
           
           req.session.order.push(req.body);
+          console.log(req.session.order);
           res.status(201).json({message:'Created'}); 
         }else{
           req.session.order.push(req.body);
+          console.log(req.session.order);
           res.status(201).json({message:'Created'});    
         }  
       }
     });
   }else{
+    console.log('Je suis dans productId !=0.....')    
     if(!isPositiveInteger(productId)){
       res.status(400).json({error:'Bad Request'});
     }
@@ -65,7 +74,7 @@ router.get('/:productId',function(req,res){  // supposed to validate
   if(order.length === 0){
     res.status(404).json({error:"Not found"});
   }else{
-    res.status(200).json(order[0]);
+    res.status(200).json(order);
   }
 });
 

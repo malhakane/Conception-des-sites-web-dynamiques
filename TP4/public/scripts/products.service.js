@@ -20,18 +20,13 @@ onlineShop.productsService = (function($) {
    * @returns {jquery.promise}  A promise that contains the products list.
    */
   self.getProducts = function(sortingCriteria, category) {
-    if (!productsPromise) {
-      productsPromise=$.get("/api/products",function(){});
-      
-      //return productsPromise;
-    }
-    return productsPromise.then(function(products) {
-      if (category) {
-        products = $.get("/api/products?category="+category+"&criteria="+sortingCriteria,function(){});
-      }
-      if (sortingCriteria) {
-        products = $.get("/api/products?category="+category+"&criteria="+sortingCriteria,function(){});
-      }
+    var url = "/api/products";
+    var data = {category:category,criteria:sortingCriteria}
+    productsPromise=$.get(url,data,function(data){
+      console.log(data);
+    });
+    
+    return productsPromise.then(function(products) { 
       return products;
     });
   };
@@ -48,7 +43,6 @@ onlineShop.productsService = (function($) {
       return products[0];
     });
   };
-
 
   return self;
 })(jQuery);

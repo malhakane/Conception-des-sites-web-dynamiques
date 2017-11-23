@@ -26,7 +26,7 @@ var onlineShop = onlineShop || {};
     }));
     $("#add-to-cart-form").attr("data-product-id", product.id);
   }
-
+  
   // Initialize the product view.
   var productId = +utils.getUrlParameter("id");
   productsService.getProduct(productId).done(function(product) {

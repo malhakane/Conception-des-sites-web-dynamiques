@@ -118,11 +118,11 @@ var onlineShop = onlineShop || {};
   // Initializes the shopping cart.
   $("#add-to-cart-form").submit(function(event) {
     event.preventDefault();
-    var productId = $(this).attr("data-product-id");
-    shoppingCartService.addItem(productId, +$(this).find("input").val()).done(function(data){
+    var productId = parseInt($(this).attr("data-product-id"));
+    shoppingCartService.addItem(productId, parseInt($(this).find("input").val())).done(function(data){
       shoppingCartService.getItemQuantity(productId).done(function(donnees){
         _updateCount();
-        console.log("quantity: "+donnees);
+        console.log("donnees: "+ JSON.stringify(donnees));
         //$("#shopping-cart-quantity").text(data);      
       });
       
