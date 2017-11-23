@@ -3,90 +3,108 @@ var router = express.Router();
 var mongoose = require("mongoose");
 var data = mongoose.model('Product');
 var session = require("express-session");
+var isPositiveInteger = require('is-positive-integer');
 
-router.get('/',function(req,res){
-  if(!req.session.order){
-    res.send(req.session.order = []); 
+
+router.get('/',function(req,res){// supposed to validate
+  if(req.session.order === undefined){
+    req.session.order = [];
+    res.status(200).send(req.session.order); 
   }else{
-    res.send(req.session.order);    
+    res.status(200).send(req.session.order);  
   }
-  console.log(req.session.order);
 });
 
-router.post('/',function(req,res){
-  mongoose.model('Product').find({id:req.body['productId']},function(err,product){
-    if(err) throw err;
-    if(product.length === 0){
-      res.status(400).send('speciefied Product Not found');
-    }else{
-      if(!req.session.order){
-        req.session.order =[].push(req.body); 
-      }else{
-        req.session.order.push(req.body);    
+router.post('/',function(req,res){ // supposed to validate
+  var productId = req.body['productId'];
+  
+  var quantity = req.body['quantity'];
+  if(isPositiveInteger(productId) && isPositiveInteger(quantity)){
+
+    data.count({id:productId},function(err,count){ 
+      if(err){
+        res.status(500).json({error:'Errors in server!'});
       }
-      console.log(req.session.order);
-      res.status(201).send(req.session.order);
+      if(count === 0){
+        res.status(400).json({error:'Bad Request'});  
+      }else{
+        
+        if(req.session.order === undefined){
+          req.session.order =[];
+          
+          req.session.order.push(req.body);
+          res.status(201).json({message:'Created'}); 
+        }else{
+          req.session.order.push(req.body);
+          res.status(201).json({message:'Created'});    
+        }  
+      }
+    });
+  }else{
+    if(!isPositiveInteger(productId)){
+      res.status(400).json({error:'Bad Request'});
     }
-  });
+    if(!isPositiveInteger(quantity)){
+      res.status(400).json({error:'Bad Request'});
+    }
+  }
+  
 });
 
 router.delete('/',function(req,res){
   req.session.order =[];
-  console.log(req.session.order);
-  res.status(204).send('All oder removed');
+  res.statusCode=204;
+  res.send('All oder removed');
 });
 
 
-router.get('/:productId',function(req,res){
-  var product = req.session.order.filter(function(xduct){
-    return xduct.productId == req.params.productId;
+router.get('/:productId',function(req,res){  // supposed to validate
+  var order = req.session.order.filter(function(ox){
+    return ox.productId == req.params.productId;
   });
-  if(!product){
-    res.status(400).send("Specified Product doesn't exist");
+  if(order.length === 0){
+    res.status(404).json({error:"Not found"});
   }else{
-    console.log(req.session.order);
-    res.status(200).send(product);
+    res.status(200).json(order[0]);
   }
 });
 
-router.put('/:productId',function(req,res){
-  if(!Number.isInteger(Number.parseInt(req.params.productId))){
-    res.status(400).send('Bad request');
+router.put('/:productId',function(req,res){// supposed to validate
+  var quantity = req.body['quantity'];
+  var productId = req.params.productId;
+  if(!isPositiveInteger(quantity)){
+    res.status(400).json({error:'Bad request'});
   }else{
     var product = req.session.order.filter(function(xduct){
-      return xduct.productId == req.params.productId;
+      return xduct.productId == productId;
     });
-    if(!product){
-      res.status(404).send("Specified Product doesn't exist");
+    if(product.length === 0){
+      res.status(404).json({error:"Not Found"});
     }else{
       for(i =0;i < req.session.order.length;i++){
-        if(req.session.order[i]['productId'] == req.params.productId) {
+        if(req.session.order[i]['productId'] === productId) {
           req.session.order[i]['quantity'] = req.body['quantity'];
         }
       }
-      console.log(req.session.order);
-      res.status(204).send();
+      res.status(204).json({message:"No Content"});
     }
   }  
 });
 
-router.delete('/:productId',function(req,res){
-  var product = req.session.order.filter(function(xduct){
-    return xduct.productId == req.params.productId;
+router.delete('/:productId',function(req,res){// supposed to validate
+  var productId = req.params.productId;
+  var order = req.session.order.filter(function(ox){
+    return ox.productId == productId;
   });
-  if(!Number.isInteger(Number.parseInt(req.params.productId))){
-    res.status(400).send('Bad request');
+  if(order.length === 0){
+    res.status(404).json({error:"Not Found"});
   }else{
-    if(!product){
-      res.status(404).send("Specified Product doesn't exist");
-    }else{
-      var elt = req.session.order[product];
-      var index = req.session.order.indexOf(elt);
-      req.session.order.splice(index,1);
-      console.log(req.session.order);
-      res.status(204).send();
-    }
-  }  
+    var elt = req.session.order[order[0]];
+    var index = req.session.order.indexOf(elt);
+    req.session.order.splice(index,1);
+    res.status(204).json();
+  }
+   
 });
 
 module.exports = router;

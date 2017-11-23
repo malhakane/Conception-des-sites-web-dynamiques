@@ -21,7 +21,7 @@ router.get("/",function(req,res){
 
           products = _applyCategory(products,'all');
           products=_applySortingCriteria(products, 'price-asc');
-          //res.json(products);
+          
         }else{
           if(!validerParametreCategorie(req.query.category) || !validerParametreCritere(req.query.criteria)){
             res.statusCode=400;
@@ -49,12 +49,9 @@ router.post('/',function(req,res){
   var product = mongoose.model('Product')(req.body);
   product.save(function(err) {
     if (err) {
-      res.statusCode = 400;
-      res.send('Bad request');
-      throw err;
+      res.status(400).json({error:'Bad request'});
     }else{
-      res.statusCode = 201;
-      res.send('User created!');
+      res.sendStatus(201);
     }
   });
 });

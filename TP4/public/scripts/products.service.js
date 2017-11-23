@@ -21,8 +21,8 @@ onlineShop.productsService = (function($) {
    */
   self.getProducts = function(sortingCriteria, category) {
     if (!productsPromise) {
-      productsPromise=$.get("/api/products?category="+category+"&criteria="+sortingCriteria,function(){});
-      console.log(productsPromise);
+      productsPromise=$.get("/api/products",function(){});
+      
       //return productsPromise;
     }
     return productsPromise.then(function(products) {
