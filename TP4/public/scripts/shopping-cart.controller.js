@@ -15,13 +15,15 @@ var onlineShop = onlineShop || {};
    * @private
    */
   function _updateCount() {
-    var itemsCount = shoppingCartService.getItemsCount();
-    var countElement = $(".shopping-cart").find(".count");
-    if (itemsCount > 0) {
-      countElement.addClass("visible").text(itemsCount);
-    } else {
-      countElement.removeClass("visible");
-    }
+    shoppingCartService.getItemsCount().done(function(itemsCount){
+      console.log('_updateCount : ' +itemsCount);
+      var countElement = $(".shopping-cart").find(".count");
+      if (itemsCount > 0) {
+        countElement.addClass("visible").text(itemsCount);
+      } else {
+        countElement.removeClass("visible");
+      }
+    }); 
   }
 
   /**
@@ -122,7 +124,7 @@ var onlineShop = onlineShop || {};
     shoppingCartService.addItem(productId, parseInt($(this).find("input").val())).done(function(data){
       shoppingCartService.getItemQuantity(productId).done(function(donnees){
         _updateCount();
-        console.log("donnees: "+ JSON.stringify(donnees));
+        console.log("donnees: "+ JSON.stringify(donnees.quantity));
         //$("#shopping-cart-quantity").text(data);      
       });
       

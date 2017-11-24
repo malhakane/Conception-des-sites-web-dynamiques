@@ -10,12 +10,12 @@ router.get('/',function(req,res){// supposed to validate
   res.contentType('application/json');
   if(req.session.order === undefined){
     
-    req.session.order = [];
-    res.json(JSON.stringify(req.session.order));
+    req.session.order = new Array();
+    res.json(req.session.order);
     //res.status(200).json(req.session.order); 
   }else{
     console.log(req.session.order);
-    res.json(JSON.stringify(req.session.order));
+    res.json(req.session.order);
     //res.status(200).json(req.session.order);  
   }
 });
@@ -36,10 +36,10 @@ router.post('/',function(req,res){ // supposed to validate
       }else{
         
         if(req.session.order === undefined){
-          req.session.order =[];
+          req.session.order = new Array();
           
           req.session.order.push(req.body);
-          console.log(req.session.order);
+          //console.log(req.session.order);
           res.status(201).json({message:'Created'}); 
         }else{
           req.session.order.push(req.body);

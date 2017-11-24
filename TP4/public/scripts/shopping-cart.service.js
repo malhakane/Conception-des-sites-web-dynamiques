@@ -69,19 +69,18 @@ onlineShop.shoppingCartService = (function($, productsService) {
    * @returns {number}  The items count.
    */
   self.getItemsCount = function() {
-    var total = 0;
-    var products = $.get('/api/shopping-cart',function(data){
-      console.log('Data : '+ typeof data);
-      var donnees = JSON.parse(data);
-      console.log('donnees : '+data); 
-      for (var donnee in donnees) {
-           console.log('donnee : '+ JSON.stringify(donnee));
-          //total += parseInt(donnee['quantity']);
+    
+    shoppingCartPromise = $.get('/api/shopping-cart',function(data){});
+    //console.log('Total : '+ total);
+    //return total;
+    return shoppingCartPromise.then(function(data){
+      var total = 0;  
+      for ( var i =0; i < data.length; i++) {
+        total += Number(data[i].quantity);
       }
-      //console.log('Total : '+ total);
+      return total;
     });
     
-    return total;
   };
 
   /**
