@@ -11,7 +11,8 @@ onlineShop.shoppingCartService = (function($, productsService) {
 
   var self = {};
   var items = {};
-  var shoppingCartPromise
+  var shoppingCartPromise;
+  var ordersPromise;
 
   /**
    * Adds an item in the shopping cart.
@@ -40,19 +41,34 @@ onlineShop.shoppingCartService = (function($, productsService) {
    * @returns {jquery.promise}    A promise that contains the list of items in the shopping cart.
    */
   self.getItems = function() {
-    return productsService.getProducts("alpha-asc").then(function(products) {
-      var temp = false;
-      return products.filter(function(product) {
-        return $.get('/api/shopping-cart',function(orders){
-          for(order in orders){
-            if(order['productId']=== product.id){
-              temp = temp || order['productId']=== product.id
+    return productsService.getProducts("alpha-asc","all").then(function(products) {
+      var temp = new Array();
+      this.getOrders().done(function(data){
+        for(product in products){
+          for(dt in data){
+            if(product.id === dt.productId){
+              temp.push(product);
             }
           }
-          return temp;
-          //return order.hasOwnProperty(product.id) && items[product.id] !== undefined;
-        })
-        //return items.hasOwnProperty(product.id) && items[product.id] !== undefined;
+        }
+        products= temp;
+        console.log('Products : ' + products);
+        return products;
+      }).map(function(product) {
+        return {
+          product: product,
+          quantity: items[product.id],
+          total: product.price * items[product.id]
+        };
+    });
+      
+    })
+  }; 
+
+  self.getItems = function() {
+    return productsService.getProducts("alpha-asc").then(function(products) {
+      return products.filter(function(product) {
+        return items.hasOwnProperty(product.id) && items[product.id] !== undefined;
       }).map(function(product) {
         return {
           product: product,
@@ -94,6 +110,15 @@ onlineShop.shoppingCartService = (function($, productsService) {
     });
     
   }; 
+
+
+  function getOrders(){
+    ordersPromise = $.get('/api/shopping-cart',function(data){});
+    return ordersPromise.then(function(data){
+      
+      return data;
+    });
+  }
 
   /**
    * Gets the quantity associated with an item.

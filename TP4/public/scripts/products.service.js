@@ -12,6 +12,7 @@ onlineShop.productsService = (function($) {
   var self = {};
   var productsPromise;
   
+  
   /**
    * Gets all the products.
    *
