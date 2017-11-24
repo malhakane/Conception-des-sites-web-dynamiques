@@ -33,7 +33,7 @@ onlineShop.shoppingCartService = (function($, productsService) {
       return data[0];
     });
   };
- 
+   
   /**
    * Gets the items in the shopping cart.
    *
@@ -68,11 +68,23 @@ onlineShop.shoppingCartService = (function($, productsService) {
    *
    * @returns {number}  The items count.
    */
+  /*self.getItemsCount = function() {
+    var total = 0;
+    shoppingCartPromise = $.get('/api/shopping-cart',function(data){
+      
+      for ( var i =0; i < data.length; i++) {
+          total += Number(data[i].quantity);
+      } 
+      return total;
+    });
+    //console.log('Total : '+ total);
+    
+    
+  };*/
+
   self.getItemsCount = function() {
     
     shoppingCartPromise = $.get('/api/shopping-cart',function(data){});
-    //console.log('Total : '+ total);
-    //return total;
     return shoppingCartPromise.then(function(data){
       var total = 0;  
       for ( var i =0; i < data.length; i++) {
@@ -81,7 +93,7 @@ onlineShop.shoppingCartService = (function($, productsService) {
       return total;
     });
     
-  };
+  }; 
 
   /**
    * Gets the quantity associated with an item.

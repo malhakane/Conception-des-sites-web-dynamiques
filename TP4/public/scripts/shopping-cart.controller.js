@@ -14,6 +14,17 @@ var onlineShop = onlineShop || {};
    *
    * @private
    */
+  /*function _updateCount() {
+    var itemsCount = shoppingCartService.getItemsCount();
+    console.log('_updateCount : ' +itemsCount)
+    var countElement = $(".shopping-cart").find(".count");
+    if (itemsCount > 0) {
+      countElement.addClass("visible").text(itemsCount);
+    } else {
+      countElement.removeClass("visible");
+    }
+  }*/
+
   function _updateCount() {
     shoppingCartService.getItemsCount().done(function(itemsCount){
       console.log('_updateCount : ' +itemsCount);
@@ -24,7 +35,7 @@ var onlineShop = onlineShop || {};
         countElement.removeClass("visible");
       }
     }); 
-  }
+  }  
 
   /**
    * Updates the total amount to display.
