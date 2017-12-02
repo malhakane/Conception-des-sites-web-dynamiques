@@ -16,16 +16,16 @@ export class ProductsComponent implements OnInit{
   products:Product[];
 
   category:string='all';
-  criteria:string='price';
+  criteria:string='price-asc';
 
   constructor(private ProductsService: ProductsService){}
 
   ngOnInit(){
-    this.getProducts();
+    this.getProducts(this.criteria,this.category);
   }
 
-  getProducts():void {
-    this.ProductsService.getProducts('price-asc','all').then((products) =>{
+  getProducts(criteria,category):void {
+    this.ProductsService.getProducts(criteria,category).then((products) =>{
         this.products = products;
         console.log(this.products);
       });    
@@ -33,6 +33,27 @@ export class ProductsComponent implements OnInit{
 
   onSelected(event){
     console.log(event.target.textContent);
+    if(event.target.textContent === 'Prix (bas-haut)')
+      this.criteria = 'price-asc';
+    if(event.target.textContent === 'Prix (haut-bas)')
+      this.criteria = 'price-dsc';
+    if(event.target.textContent === 'Nom (A-Z)')
+      this.criteria = 'alpha-asc';
+    if(event.target.textContent === 'Nom (Z-A)')
+      this.criteria = 'alpha-dsc';
+
+    if(event.target.textContent === 'Appareils Photo')
+      this.category = 'cameras';
+    if(event.target.textContent === 'Consoles')
+      this.category = 'consoles';
+    if(event.target.textContent === 'Ecrans')
+      this.category = 'screens';
+    if(event.target.textContent === 'Ordinateurs')
+      this.category = 'computers';
+    if(event.target.textContent === 'Tous les produits')
+      this.category = 'all';
+
+    this.getProducts(this.criteria,this.category); 
   }
   
 }

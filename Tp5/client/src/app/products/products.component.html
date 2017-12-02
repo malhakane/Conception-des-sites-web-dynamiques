@@ -2,20 +2,20 @@
   <section>
     <h2>Catégories</h2>
     <div class="btn-group vertical" id="product-categories">
-      <button>Appareils photo</button>
-      <button>Consoles</button>
-      <button>Écrans</button>
-      <button>Ordinateurs</button>
-      <button class="selected">Tous les produits</button>
+      <button (click)="onSelected($event)">Appareils photo</button>
+      <button (click)="onSelected($event)">Consoles</button>
+      <button (click)="onSelected($event)">Écrans</button>
+      <button (click)="onSelected($event)">Ordinateurs</button>
+      <button (click)="onSelected($event)" class="selected">Tous les produits</button>
     </div>
   </section>
   <section>
     <h2>Classement</h2>
     <div class="btn-group vertical" id="product-criteria">
-      <button class="selected">Prix (bas-haut)</button>
-      <button>Prix (haut-bas)</button>
-      <button>Nom (A-Z)</button>
-      <button>Nom (Z-A)</button>
+      <button (click)="onSelected($event)" class="selected">Prix (bas-haut)</button>
+      <button (click)="onSelected($event)">Prix (haut-bas)</button>
+      <button (click)="onSelected($event)">Nom (A-Z)</button>
+      <button (click)="onSelected($event)">Nom (Z-A)</button>
     </div>
   </section>
 </section>
