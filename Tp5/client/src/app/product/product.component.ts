@@ -43,9 +43,7 @@ export class ProductComponent implements OnInit {
 
   submit():void {
     console.log('Item : ' + this.item.productId);
-    this.ShoppingCartService.addItem(this.item).then(()=>{
-
-    });
+    this.ShoppingCartService.addItem(this.item);
 
   }
 }

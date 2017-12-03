@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import{ProductsService} from '../products.service'
-import {Product}  from '../products.service'
+import { ProductsService } from '../products.service'
+import { Product }  from '../products.service'
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
