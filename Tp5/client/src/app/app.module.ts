@@ -17,6 +17,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProductsService } from './products.service';
 import { ShoppingCartService } from './shopping-cart.service';
 
+import { PopupModule } from 'ng2-opd-popup';
+
 // Application routes
 const appRoutes: Routes = [
   { path: '', redirectTo: '/accueil', pathMatch: 'full' },
@@ -44,13 +46,13 @@ const appRoutes: Routes = [
   ],
   imports: [
     CommonModule,
-    BrowserModule,
+    BrowserModule, 
     FormsModule,
     HttpModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }
-    )
+    ),PopupModule.forRoot()
   ],
   providers: [
     ProductsService,

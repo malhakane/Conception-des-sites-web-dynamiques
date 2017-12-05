@@ -2,7 +2,8 @@ import { Component,OnInit } from '@angular/core';
 import { ShoppingCartService } from '../shopping-cart.service';
 import {Item} from '../shopping-cart.service';
 import { ProductsService} from '../products.service';
-import {Product}  from '../products.service'
+import {Product}  from '../products.service';
+import {Popup} from 'ng2-opd-popup';
 
 
 /**
@@ -17,16 +18,22 @@ export class ShoppingCartComponent implements OnInit{
   items=[];
   productsMap=[];
   total =0;
-  isValid = false;
+  idToDelete = 0;
 
+  
 
-
-  constructor(private ShoppingCartService:ShoppingCartService,private ProductsService: ProductsService) { }
+  constructor(private ShoppingCartService:ShoppingCartService,
+    private ProductsService: ProductsService,
+    private popup1:Popup,
+    private popup2:Popup) { }
   
 
   ngOnInit() {
-    this.getItems().then(datas => {this.productsMap=datas;});
+    this.getItems().then(datas => {
+      this.productsMap=datas;
+      this.AnyProductInChart();});
     this.getTotalAmount();
+    
   }
 
   getItems():Promise<{product: any; quantity: any; total: number; }[]>{
@@ -61,14 +68,18 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   removeItem(id:number):void {
-    this.ShoppingCartService.deleteItem(id).then(()=>{
-      this.total =0;
-      this.getItems().then(datas =>{
-        this.total =0; 
-        this.productsMap=datas;
-      });
-      this.getTotalAmount();
-    });
+    this.idToDelete = id;
+    this.popup1.options = {
+      header: "Suppression Produit",
+      color: "#14597f", // red, blue.... 
+      widthProsentage: 60, // The with of the popou measured by browser width 
+      animationDuration: 1, // in seconds, 0 = no animation 
+      showButtons: true, // You can hide this in case you want to use custom buttons 
+      confirmBtnContent: "OK", // The text on your confirm button 
+      cancleBtnContent: "NO", // the text on your cancel button 
+      animation: "fadeInDown" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown' 
+  };
+    this.popup1.show();
   }
 
   updateQuantity(id:number,direction:number):void {
@@ -83,13 +94,17 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   deleteAllItems():void{
-    this.ShoppingCartService.deleteItems().then(()=>{
-      this.getItems().then(datas => {
-        this.total =0; 
-        this.productsMap=datas;
-        this.getTotalAmount();
-      }); 
-    });
+    this.popup2.options = {
+      header: "Suppression des Produits",
+      color: "#14597f", // red, blue.... 
+      widthProsentage: 60, // The with of the popou measured by browser width 
+      animationDuration: 1, // in seconds, 0 = no animation 
+      showButtons: true, // You can hide this in case you want to use custom buttons 
+      confirmBtnContent: "OK", // The text on your confirm button 
+      cancleBtnContent: "NO", // the text on your cancel button 
+      animation: "fadeInDown" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown' 
+    };
+    this.popup2.show();
   }
 
   isValidForm(quantity:number) {
@@ -100,4 +115,42 @@ export class ShoppingCartComponent implements OnInit{
       return true;
     }
   }
+
+  AnyProductInChart(){
+    console.log("productsMap : " + this.productsMap.length);
+    if(this.productsMap.length === 0){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
+  Ok1(){
+    this.ShoppingCartService.deleteItem(this.idToDelete).then(()=>{
+      this.total =0;
+      this.getItems().then(datas =>{
+        this.total =0; 
+        this.productsMap=datas;
+        //this.AnyProductInChart();
+      });
+      this.getTotalAmount();
+      this.popup1.hide();
+      
+    });
+    
+  }
+
+  Ok2(){
+    this.ShoppingCartService.deleteItems().then(()=>{
+      this.getItems().then(datas => {
+        this.total =0; 
+        this.productsMap=datas;
+        this.getTotalAmount();
+        this.popup2.hide();
+        //this.AnyProductInChart();
+      }); 
+    });
+  }
+
+
 }

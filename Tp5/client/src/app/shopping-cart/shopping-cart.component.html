@@ -1,42 +1,52 @@
 <article>
   <h1>Panier</h1>
-  <table class="table shopping-cart-table">
-    <thead>
-    <tr>
-      <th></th>
-      <th>Produit</th>
-      <th>Prix unitaire</th>
-      <th>Quantité</th>
-      <th>Prix</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor = 'let productMap of productsMap'>
-        <td>
-          <button (click) = 'removeItem(productMap.product.id)' class="remove-item-button" title="Supprimer">
-            <i class="fa fa-times"></i>
-          </button>
-        </td>
-        <td>
-          <a routerLink="/produits/{{productMap.product.id}}">{{productMap.product.name}}</a>
-        </td>
-        <td>{{productMap.product.price}}&thinsp;$</td>
-        <td>
-          <div class="row">
-            <div class="col">
-              <button [disabled]="isValidForm(productMap.quantity)" (click)= 'updateQuantity(productMap.product.id,-1)' class="remove-quantity-button" title="Retirer" ><i class="fa fa-minus"></i></button>
-            </div>
-            <div class="col quantity">{{productMap.quantity}}</div>
-            <div class="col">
-              <button (click)= 'updateQuantity(productMap.product.id,1)' class="add-quantity-button" title="Ajouter"><i class="fa fa-plus"></i></button>
-            </div>
-          </div>
-        </td>
-        <td class="price">{{productMap.total}}&thinsp;$</td>
+  <div *ngIf="AnyProductInChart();else other_content">
+    <p>Aucun produit dans le panier</p>
+  </div>
+
+  <ng-template #other_content>
+    <table class="table shopping-cart-table">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Produit</th>
+        <th>Prix unitaire</th>
+        <th>Quantité</th>
+        <th>Prix</th>
       </tr>
-    </tbody>
-  </table>
-  <p class="shopping-cart-total">Total: <strong id="total-amount">{{total}}&thinsp;$</strong></p>
-  <a class="btn pull-right" routerLink="/commande">Commander <i class="fa fa-angle-double-right"></i></a>
-  <button (click)= 'deleteAllItems()' class="btn" id="remove-all-items-button"><i class="fa fa-trash-o"></i>&nbsp; Vider le panier</button>
+      <popup #popup1 (confirmClick) = 'Ok1()'>Voulez-vous supprimer le produit du panier ?</popup>
+      <popup #popup2 (confirmClick) = 'Ok2()'>Voulez-vous supprimer tous les produits du panier ?</popup>
+    
+      </thead>
+      <tbody>
+        <tr *ngFor = 'let productMap of productsMap'>
+          <td>
+            <button (click) = 'removeItem(productMap.product.id)' class="remove-item-button" title="Supprimer">
+              <i class="fa fa-times"></i>
+            </button>
+          </td>
+          <td>
+            <a routerLink="/produits/{{productMap.product.id}}">{{productMap.product.name}}</a>
+          </td>
+          <td>{{productMap.product.price}}&thinsp;$</td>
+          <td>
+            <div class="row">
+              <div class="col">
+                <button [disabled]="isValidForm(productMap.quantity)" (click)= 'updateQuantity(productMap.product.id,-1)' class="remove-quantity-button" title="Retirer" ><i class="fa fa-minus"></i></button>
+              </div>
+              <div class="col quantity">{{productMap.quantity}}</div>
+              <div class="col">
+                <button (click)= 'updateQuantity(productMap.product.id,1)' class="add-quantity-button" title="Ajouter"><i class="fa fa-plus"></i></button>
+              </div>
+            </div>
+          </td>
+          <td class="price">{{productMap.total}}&thinsp;$</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="shopping-cart-total">Total: <strong id="total-amount">{{total}}&thinsp;$</strong></p>
+    <a class="btn pull-right" routerLink="/commande">Commander <i class="fa fa-angle-double-right"></i></a>
+    <button (click)= 'deleteAllItems()' class="btn" id="remove-all-items-button"><i class="fa fa-trash-o"></i>&nbsp; Vider le panier</button>
+  </ng-template>
+  
 </article>
