@@ -31,7 +31,8 @@ export class ShoppingCartComponent implements OnInit{
   ngOnInit() {
     this.getItems().then(datas => {
       this.productsMap=datas;
-      this.AnyProductInChart();});
+      this.AnyProductInChart();
+    });
     this.getTotalAmount();
     
   }
@@ -117,13 +118,14 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   AnyProductInChart(){
-    console.log("productsMap : " + this.productsMap.length);
     if(this.productsMap.length === 0){
       return true;
     }else{
       return false;
     }
   }
+      
+  
   
   Ok1(){
     this.ShoppingCartService.deleteItem(this.idToDelete).then(()=>{
@@ -151,6 +153,5 @@ export class ShoppingCartComponent implements OnInit{
       }); 
     });
   }
-
 
 }

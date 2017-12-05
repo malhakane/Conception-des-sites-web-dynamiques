@@ -56,7 +56,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     ProductsService,
-    ShoppingCartService
+    ShoppingCartService,
   ],
   bootstrap: [AppComponent]
 })
