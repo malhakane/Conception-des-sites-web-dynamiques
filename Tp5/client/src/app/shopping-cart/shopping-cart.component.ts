@@ -17,6 +17,8 @@ export class ShoppingCartComponent implements OnInit{
   items=[];
   productsMap=[];
   total =0;
+  isValid = false;
+
 
 
   constructor(private ShoppingCartService:ShoppingCartService,private ProductsService: ProductsService) { }
@@ -88,5 +90,14 @@ export class ShoppingCartComponent implements OnInit{
         this.getTotalAmount();
       }); 
     });
+  }
+
+  isValidForm(quantity:number) {
+    
+    if(quantity > 1){
+      return false;
+    }else{
+      return true;
+    }
   }
 }

@@ -24,7 +24,7 @@
         <td>
           <div class="row">
             <div class="col">
-              <button (click)= 'updateQuantity(productMap.product.id,-1)' class="remove-quantity-button" title="Retirer" disabled><i class="fa fa-minus"></i></button>
+              <button [disabled]="isValidForm(productMap.quantity)" (click)= 'updateQuantity(productMap.product.id,-1)' class="remove-quantity-button" title="Retirer" ><i class="fa fa-minus"></i></button>
             </div>
             <div class="col quantity">{{productMap.quantity}}</div>
             <div class="col">

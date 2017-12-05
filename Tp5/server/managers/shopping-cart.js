@@ -66,7 +66,6 @@ self.addItem = function(item) {
   isValid &= !isNaN(item.quantity) && typeof item.quantity === "number" && item.quantity >= 0;
   if (!isValid) {
     deferred.resolve(true);
-    console.log("Je suis dans invalid");
     return deferred.promise;
   }
 
@@ -75,17 +74,12 @@ self.addItem = function(item) {
       return element.productId === item.productId;
     });
     if (result.data !== null && !itemFound) {
-      console.log(item)
       items.push(item);
-      console.log("Je suis dans enregistrer");
-      
       deferred.resolve(false);
     } else {
-      console.log('Je suis dans resltat found');
       deferred.resolve(true);
     }
   });
-  console.log('Server Items: '+ JSON.stringify(items));
   return deferred.promise;
 };
 
