@@ -12,7 +12,7 @@ router.get("/", function(req, res) {
     }
   });
 });
-
+ 
 // Gets the product associated with the specified ID.
 router.get("/:id", function(req, res) {
   productsManager.getProduct(req.params.id).done(function(result) {
@@ -34,7 +34,7 @@ router.post("/", function(req, res) {
     }
   });
 });
-
+  
 // Deletes the product associated with the specified ID in the database.
 router.delete("/:id", function(req, res) {
   productsManager.deleteProduct(req.params.id).done(function(err) {

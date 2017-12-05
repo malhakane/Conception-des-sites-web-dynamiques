@@ -50,8 +50,11 @@ export class ShoppingCartService {
   }
 
   deleteItem(productId:number):Promise<null> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    // ***** Il est nécessaire de mettre la propriété "withCredientials" à TRUE. *****
+    const options = new RequestOptions({ headers: headers, withCredentials: true });
     const url = `${Config.apiUrl}/shopping-cart/${productId}`;
-    return this.http.delete(url)
+    return this.http.delete(url,options)
       .toPromise()
       .then()
       .catch(()=>null);
@@ -66,6 +69,43 @@ export class ShoppingCartService {
       .toPromise()
       .then(items => items.json() as Item[])
       .catch(() => null);
+  }
+
+  updateQunatity(id:number,direction:number):Promise<void> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    // ***** Il est nécessaire de mettre la propriété "withCredientials" à TRUE. *****
+    const options = new RequestOptions({ headers: headers, withCredentials: true });
+    let url = `${Config.apiUrl}/shopping-cart/${id}`;
+    return this.getItem(id).then(item =>{
+      if(direction ===1){
+        this.http.put(url,{"quantity": item.quantity+1},options).subscribe();
+      }
+      if(direction ===-1){
+        this.http.put(url,{"quantity": item.quantity-1},options).subscribe();
+      }
+    }).then();
+  }
+
+  getItem(id:number):Promise<Item> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    // ***** Il est nécessaire de mettre la propriété "withCredientials" à TRUE. *****
+    const options = new RequestOptions({ headers: headers, withCredentials: true });
+    let url = `${Config.apiUrl}/shopping-cart/${id}`;
+    return this.http.get(url,options)
+      .toPromise()
+      .then(item =>item.json() as Item)
+      .catch(()=> null);
+  }
+
+  deleteItems():Promise<null> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    // ***** Il est nécessaire de mettre la propriété "withCredientials" à TRUE. *****
+    const options = new RequestOptions({ headers: headers, withCredentials: true });
+    const url = `${Config.apiUrl}/shopping-cart/`;
+    return this.http.delete(url,options)
+      .toPromise()
+      .then()
+      .catch(()=>null);
   }
 
 }

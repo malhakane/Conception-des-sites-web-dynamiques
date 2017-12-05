@@ -28,7 +28,7 @@ const MODEL = [
 ];
 
 var self = {};
-
+  
 /**
  * Gets all the products in the database. The list returned is based on the specified category and sorting criteria.
  *
