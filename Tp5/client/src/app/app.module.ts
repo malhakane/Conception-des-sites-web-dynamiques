@@ -16,6 +16,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductsService } from './products.service';
 import { ShoppingCartService } from './shopping-cart.service';
+import { OrderService } from './order.service'
 
 import { PopupModule } from 'ng2-opd-popup';
 
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
   providers: [
     ProductsService,
     ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
