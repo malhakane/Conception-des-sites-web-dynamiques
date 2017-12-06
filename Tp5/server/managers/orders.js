@@ -13,7 +13,7 @@ const MODEL = [
   "phone",
   "products"
 ];
-
+  
 var self = {};
 
 /**

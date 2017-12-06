@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Order } from '../order.service';
 import { ShoppingCartService } from '../shopping-cart.service';
 import {Item} from '../shopping-cart.service';
-import {OrderService} from '../order.service'
+import {OrderService} from '../order.service';
+import { NgModel } from '@angular/forms';
+import { Router } from '@angular/router';
 declare const $: any;
 
 /**
@@ -15,9 +17,16 @@ declare const $: any;
 export class OrderComponent implements OnInit {
 
   orderForm: any;
-  order:Order;
+  order ={'id':0,
+          "firstName":'',
+          "lastName":'',
+          'email':'',
+          'phone':'',
+          'products':[] 
+        };
 
-  constructor(private ShoppingCartService:ShoppingCartService,private OrderService:OrderService){}
+
+  constructor(private router: Router,private ShoppingCartService:ShoppingCartService,private OrderService:OrderService){}
 
   /**
    * Occurs when the component is initialized.
@@ -48,7 +57,7 @@ export class OrderComponent implements OnInit {
       }
     });
 
-    this.getItems();
+    //this.getItems();
   }
 
   /**
@@ -59,12 +68,11 @@ export class OrderComponent implements OnInit {
       return;
     }
     // TODO: Compléter la soumission des informations lorsque le formulaire soumis est valide.
-    this.OrderService.addOrder(this.order);
+    console.log('Order : '+ JSON.stringify(this.order));
+    this.ShoppingCartService.getItems().then(items => {
+      this.order.products = items;
+      console.log('Items : '+items);
+      this.OrderService.addOrder(this.order);
+      this.router.navigate(['/confirmation']);},(error) => { return;});
   }
-
-  getItems(){
-    this.ShoppingCartService.getItems().then(items => this.order.products = items);
-  }
-
-
 }

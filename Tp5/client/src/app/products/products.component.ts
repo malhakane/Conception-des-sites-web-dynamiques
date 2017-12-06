@@ -4,6 +4,7 @@ import { Product }  from '../products.service'
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { DecimalPipe } from '@angular/common';
 /**
  * Defines the component responsible to manage the display of the products page.
  */
