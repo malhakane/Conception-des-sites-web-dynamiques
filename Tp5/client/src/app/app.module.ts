@@ -16,7 +16,9 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductsService } from './products.service';
 import { ShoppingCartService } from './shopping-cart.service';
-import { OrderService } from './order.service'
+import { OrderService } from './order.service';
+
+import { frenchFormatPipe } from './app.component';
 
 import { PopupModule } from 'ng2-opd-popup';
 
@@ -43,7 +45,8 @@ const appRoutes: Routes = [
     ShoppingCartComponent,
     OrderComponent,
     ConfirmationComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    frenchFormatPipe
   ],
   imports: [
     CommonModule,
