@@ -1,5 +1,6 @@
-import { Component,OnInit,Pipe, PipeTransform } from '@angular/core';
-
+import { Component,OnInit,Pipe, PipeTransform,OnDestroy } from '@angular/core';
+import {ItemsCountService} from './items-count.service';
+import { Subscription } from 'rxjs/Subscription';
 /**
  * Defines the main component of the application.
  */
@@ -7,7 +8,10 @@ import { Component,OnInit,Pipe, PipeTransform } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit,OnDestroy{
+
+  subscription:Subscription;
+  count:any;
 
   // TODO: Modifier le nom des auteurs pour vos noms
   readonly authors = [
@@ -17,9 +21,15 @@ export class AppComponent implements OnInit{
 
   // TODO: À compléter
 
+  constructor(private ItemsCountService:ItemsCountService){}
+
   ngOnInit(){
+    this.ItemsCountService.getCount().subscribe(count =>{this.count = count;console.log('count : '+ JSON.stringify(count))});
 
+  }
 
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
   
@@ -34,6 +44,4 @@ export class frenchFormatPipe implements PipeTransform {
       return value.toFixed(2).replace('.', ',') + '';
     }
   }
-
-
 }

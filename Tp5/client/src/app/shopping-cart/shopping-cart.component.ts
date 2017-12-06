@@ -4,6 +4,8 @@ import {Item} from '../shopping-cart.service';
 import { ProductsService} from '../products.service';
 import {Product}  from '../products.service';
 import {Popup} from 'ng2-opd-popup';
+import {ItemsCountService} from '../items-count.service'
+
 
 
 /**
@@ -22,7 +24,8 @@ export class ShoppingCartComponent implements OnInit{
 
   
 
-  constructor(private ShoppingCartService:ShoppingCartService,
+  constructor(private ItemsCountService:ItemsCountService,
+    private ShoppingCartService:ShoppingCartService,
     private ProductsService: ProductsService,
     private popup1:Popup,
     private popup2:Popup) { }
@@ -86,6 +89,12 @@ export class ShoppingCartComponent implements OnInit{
   updateQuantity(id:number,direction:number):void {
     this.ShoppingCartService.updateQunatity(id,direction).then(()=>{     
       this.getItems().then(datas =>{
+        var itemsNumber=0;
+        datas.forEach(data => {
+          itemsNumber +=data.quantity;
+        });
+        this.ItemsCountService.sendCount(itemsNumber);
+        this.ItemsCountService.sendCount
         this.total =0; 
         this.productsMap=datas;
         this.getTotalAmount();

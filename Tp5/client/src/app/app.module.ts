@@ -19,6 +19,7 @@ import { ShoppingCartService } from './shopping-cart.service';
 import { OrderService } from './order.service';
 
 import { frenchFormatPipe } from './app.component';
+import {ItemsCountService} from './items-count.service';
 
 import { PopupModule } from 'ng2-opd-popup';
 
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
   providers: [
     ProductsService,
     ShoppingCartService,
-    OrderService
+    OrderService,
+    ItemsCountService
   ],
   bootstrap: [AppComponent]
 })

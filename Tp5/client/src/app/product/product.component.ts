@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import {Product}  from '../products.service'
 import{ProductsService} from '../products.service'
 import { ShoppingCartService } from '../shopping-cart.service';
-import {Item} from '../shopping-cart.service'
+import {Item} from '../shopping-cart.service';
+import {ItemsCountService} from '../items-count.service'
 
 /**
  * Defines the component responsible to manage the product page.
@@ -22,7 +23,10 @@ export class ProductComponent implements OnInit {
    *
    * @param route                   The active route.
    */
-  constructor(private route: ActivatedRoute,private ProductService:ProductsService,private ShoppingCartService:ShoppingCartService) { }
+  constructor(private route: ActivatedRoute,
+    private ProductService:ProductsService,
+    private ShoppingCartService:ShoppingCartService,
+    private ItemsCountService:ItemsCountService) { }
 
   /**
    * Occurs when the component is initialized.
@@ -43,7 +47,14 @@ export class ProductComponent implements OnInit {
 
   submit():void {
     console.log('Item : ' + this.item.productId);
-    this.ShoppingCartService.addItem(this.item);
-
+    this.ShoppingCartService.addItem(this.item).then(() =>{
+      this.ShoppingCartService.getItems().then(items =>{
+        var itemsNumber=0;
+        items.forEach(item => {
+          itemsNumber +=item.quantity;
+        });
+        this.ItemsCountService.sendCount(itemsNumber);
+      });  
+    });
   }
 }

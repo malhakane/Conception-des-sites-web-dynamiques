@@ -26,7 +26,7 @@ const MODEL = [
   "description",
   "features"
 ];
-
+ 
 var self = {};
   
 /**

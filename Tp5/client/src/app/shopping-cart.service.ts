@@ -41,12 +41,15 @@ export class ShoppingCartService {
    * @param item               The item to store in database.
    * @returns {Promise<null>}    A promise that contains null.
    */
-  addItem(item:Item) {
+  addItem(item:Item):Promise<void>{
     const headers = new Headers({ 'Content-Type': 'application/json' });
     // ***** Il est nécessaire de mettre la propriété "withCredientials" à TRUE. *****
     const options = new RequestOptions({ headers: headers, withCredentials: true });
     let url = `${Config.apiUrl}/shopping-cart/`;
-    this.http.post(url,item,options).subscribe(); 
+    return this.http.post(url,item,options)
+      .toPromise()
+      .then()
+      .catch(()=>null); 
   }
 
   deleteItem(productId:number):Promise<null> {
