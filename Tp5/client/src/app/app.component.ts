@@ -1,6 +1,8 @@
 import { Component,OnInit,Pipe, PipeTransform,OnDestroy } from '@angular/core';
 import {ItemsCountService} from './items-count.service';
 import { Subscription } from 'rxjs/Subscription';
+import { ShoppingCartService } from './shopping-cart.service';
+
 /**
  * Defines the main component of the application.
  */
@@ -21,9 +23,16 @@ export class AppComponent implements OnInit,OnDestroy{
 
   // TODO: À compléter
 
-  constructor(private ItemsCountService:ItemsCountService){}
+  constructor(private ShoppingCartService:ShoppingCartService,private ItemsCountService:ItemsCountService){
+    this.ShoppingCartService.getItems().then(items =>{
+      items.forEach(item => {
+         this.count += item.quantity;
+      });
+    })
+  }
 
   ngOnInit(){
+    
     this.ItemsCountService.getCount().subscribe(count =>{this.count = count;console.log('count : '+ JSON.stringify(count))});
 
   }

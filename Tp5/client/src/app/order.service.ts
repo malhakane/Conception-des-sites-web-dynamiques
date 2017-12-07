@@ -29,12 +29,15 @@ export class OrderService {
 
   constructor(private http: Http) { }
 
-  addOrder(order:Order) {
+  addOrder(order:Order):Promise<void> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     // ***** Il est nécessaire de mettre la propriété "withCredientials" à TRUE. *****
     const options = new RequestOptions({ headers: headers, withCredentials: true });
     let url = `${Config.apiUrl}/orders/`;
-    this.http.post(url,order,options).subscribe(); 
+    return this.http.post(url,order,options)
+      .toPromise()
+      .then() 
+      .catch(()=>null);
   }
 
 }

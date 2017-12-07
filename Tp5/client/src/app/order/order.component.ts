@@ -5,6 +5,8 @@ import {Item} from '../shopping-cart.service';
 import {OrderService} from '../order.service';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ItemsCountService } from '../items-count.service';
+
 declare const $: any;
 
 /**
@@ -26,7 +28,10 @@ export class OrderComponent implements OnInit {
         };
 
 
-  constructor(private router: Router,private ShoppingCartService:ShoppingCartService,private OrderService:OrderService){}
+  constructor(private router: Router,
+    private ShoppingCartService:ShoppingCartService,
+    private OrderService:OrderService,
+    private ItemsCountService:ItemsCountService){}
 
   /**
    * Occurs when the component is initialized.
@@ -72,7 +77,18 @@ export class OrderComponent implements OnInit {
     this.ShoppingCartService.getItems().then(items => {
       this.order.products = items;
       console.log('Items : '+items);
-      this.OrderService.addOrder(this.order);
-      this.router.navigate(['/confirmation']);},(error) => { return;});
+      this.OrderService.addOrder(this.order).then(()=>{
+        this.ShoppingCartService.deleteItems().then(()=>{
+          this.ShoppingCartService.getItems().then(items=>{
+            var itemsNumber=0;
+            items.forEach(item => {
+              itemsNumber +=item.quantity;
+            });
+            this.ItemsCountService.sendCount(itemsNumber);
+          })
+          this.router.navigate(['/confirmation']);},(error) => { return;});
+        });
+      });
+      
   }
 }

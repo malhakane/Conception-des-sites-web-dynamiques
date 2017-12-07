@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,ViewChild } from '@angular/core';
 import { ShoppingCartService } from '../shopping-cart.service';
 import {Item} from '../shopping-cart.service';
 import { ProductsService} from '../products.service';
@@ -22,13 +22,12 @@ export class ShoppingCartComponent implements OnInit{
   total =0;
   idToDelete = 0;
 
-  
+  @ViewChild('popup1') popup1: Popup;
+  @ViewChild('popup2') popup2: Popup;
 
   constructor(private ItemsCountService:ItemsCountService,
     private ShoppingCartService:ShoppingCartService,
-    private ProductsService: ProductsService,
-    private popup1:Popup,
-    private popup2:Popup) { }
+    private ProductsService: ProductsService) { }
   
 
   ngOnInit() {
@@ -37,6 +36,28 @@ export class ShoppingCartComponent implements OnInit{
       this.AnyProductInChart();
     });
     this.getTotalAmount();
+
+    this.popup1.options = {
+      header: "Suppression Produit",
+      color: "#14597f", // red, blue.... 
+      widthProsentage: 60, // The with of the popou measured by browser width 
+      animationDuration: 1, // in seconds, 0 = no animation 
+      showButtons: true, // You can hide this in case you want to use custom buttons 
+      confirmBtnContent: "OK", // The text on your confirm button 
+      cancleBtnContent: "NO", // the text on your cancel button 
+      animation: "fadeInDown" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown' 
+    };
+
+    this.popup2.options = {
+      header: "Suppression des Produits",
+      color: "#14597f", // red, blue.... 
+      widthProsentage: 60, // The with of the popou measured by browser width 
+      animationDuration: 1, // in seconds, 0 = no animation 
+      showButtons: true, // You can hide this in case you want to use custom buttons 
+      confirmBtnContent: "OK", // The text on your confirm button 
+      cancleBtnContent: "NO", // the text on your cancel button 
+      animation: "fadeInDown" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown' 
+    };
     
   }
 
@@ -73,16 +94,7 @@ export class ShoppingCartComponent implements OnInit{
 
   removeItem(id:number):void {
     this.idToDelete = id;
-    this.popup1.options = {
-      header: "Suppression Produit",
-      color: "#14597f", // red, blue.... 
-      widthProsentage: 60, // The with of the popou measured by browser width 
-      animationDuration: 1, // in seconds, 0 = no animation 
-      showButtons: true, // You can hide this in case you want to use custom buttons 
-      confirmBtnContent: "OK", // The text on your confirm button 
-      cancleBtnContent: "NO", // the text on your cancel button 
-      animation: "fadeInDown" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown' 
-  };
+    
     this.popup1.show();
   }
 
@@ -104,16 +116,6 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   deleteAllItems():void{
-    this.popup2.options = {
-      header: "Suppression des Produits",
-      color: "#14597f", // red, blue.... 
-      widthProsentage: 60, // The with of the popou measured by browser width 
-      animationDuration: 1, // in seconds, 0 = no animation 
-      showButtons: true, // You can hide this in case you want to use custom buttons 
-      confirmBtnContent: "OK", // The text on your confirm button 
-      cancleBtnContent: "NO", // the text on your cancel button 
-      animation: "fadeInDown" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown' 
-    };
     this.popup2.show();
   }
 
@@ -142,7 +144,11 @@ export class ShoppingCartComponent implements OnInit{
       this.getItems().then(datas =>{
         this.total =0; 
         this.productsMap=datas;
-        //this.AnyProductInChart();
+        var itemsNumber=0;
+        datas.forEach(item => {
+          itemsNumber +=item.quantity;
+        });
+        this.ItemsCountService.sendCount(itemsNumber);
       });
       this.getTotalAmount();
       this.popup1.hide();
@@ -154,6 +160,11 @@ export class ShoppingCartComponent implements OnInit{
   Ok2(){
     this.ShoppingCartService.deleteItems().then(()=>{
       this.getItems().then(datas => {
+        var itemsNumber=0;
+        datas.forEach(item => {
+          itemsNumber +=item.quantity;
+        });
+        this.ItemsCountService.sendCount(itemsNumber);
         this.total =0; 
         this.productsMap=datas;
         this.getTotalAmount();
