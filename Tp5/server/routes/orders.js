@@ -42,6 +42,7 @@ router.delete("/:id", function(req, res) {
   })
 });
 
+
 // Deletes all the orders in the database.
 router.delete("/", function(req, res) {
   ordersManager.deleteOrders().done(function() {
